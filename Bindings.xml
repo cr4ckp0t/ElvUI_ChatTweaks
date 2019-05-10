@@ -1,0 +1,59 @@
+<Bindings>
+	<Binding name="ECTOFFICER" header="ECT">
+		ChatFrame_OpenChat("/o");
+	</Binding>
+	<Binding name="ECTGUILD" >
+		ChatFrame_OpenChat("/g");
+	</Binding>
+ 	<Binding name="ECTPARTY" >
+		ChatFrame_OpenChat("/p");
+	</Binding>
+	<Binding name="ECTRAID" >
+		ChatFrame_OpenChat("/raid");
+	</Binding>
+	<Binding name="ECTRAIDWARN" >
+		ChatFrame_OpenChat("/rw");
+	</Binding>
+	<Binding name="ECTINSTANCE" >
+		ChatFrame_OpenChat("/i");
+	</Binding>
+	<Binding name="ECTSAY" >
+		ChatFrame_OpenChat("/say");
+	</Binding>
+	<Binding name="ECTYELL" >
+		ChatFrame_OpenChat("/yell");
+	</Binding>
+	<Binding name="ECTWHISPER" >
+		ChatFrame_OpenChat("/w");
+	</Binding>
+	<Binding name="ECTONE">
+		ChatFrame_OpenChat("/1");
+	</Binding>
+	<Binding name="ECTTWO">
+		ChatFrame_OpenChat("/2");
+	</Binding>
+	<Binding name="ECTTHREE">
+		ChatFrame_OpenChat("/3");
+	</Binding>
+	<Binding name="ECTFOUR">
+		ChatFrame_OpenChat("/4");
+	</Binding>
+	<Binding name="ECTFIVE">
+		ChatFrame_OpenChat("/5");
+	</Binding>
+	<Binding name="ECTSIX">
+		ChatFrame_OpenChat("/6");
+	</Binding>
+	<Binding name="ECTSEVEN">
+		ChatFrame_OpenChat("/7");
+	</Binding>
+	<Binding name="ECTEIGHT">
+		ChatFrame_OpenChat("/8");
+	</Binding>
+  	<Binding name="ECTNINE">
+		ChatFrame_OpenChat("/9");
+	</Binding>
+  	<Binding name="ECTSMARTGROUP">
+		ChatFrame_OpenChat("/gs ");
+	</Binding>
+</Bindings>

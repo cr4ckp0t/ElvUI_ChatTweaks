@@ -1,0 +1,49 @@
+package-as: ElvUI_ChatTweaks
+
+enable-nolib-creation: no
+
+externals:
+	Libraries\LibStub:
+		url: svn://svn.wowace.com/wow/libstub/mainline/trunk
+		tag: latest
+	Libraries\CallbackHandler-1.0:
+		url: svn://svn.wowace.com/wow/callbackhandler/mainline/trunk/CallbackHandler-1.0
+		tag: latest
+	Libraries\AceAddon-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceAddon-3.0
+	Libraries\AceConfig-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceConfig-3.0
+	Libraries\AceConsole-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceConsole-3.0
+	Libraries\AceDB-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceDB-3.0
+	Libraries\AceDBOptions-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceDBOptions-3.0
+	Libraries\AceEvent-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceEvent-3.0
+	Libraries\AceGUI-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceGUI-3.0
+	Libraries\AceGUI-3.0-SharedMediaWidgets:
+		url: svn://svn.wowace.com/wow/ace-gui-3-0-shared-media-widgets/mainline/trunk
+	Libraries\AceHook-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceHook-3.0
+	Libraries\AceLocale-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceLocale-3.0
+	Libraries\AceTab-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceTab-3.0
+	Libraries\AceTimer-3.0:
+		url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceTimer-3.0
+	Libraries\LibAlts-1.0:
+		url: svn://svn.wowace.com/wow/libalts-1-0/mainline/trunk
+	Libraries\LibPetJournal-2.0:
+		url: http://hg.curseforge.net/wow/libpetjournal-2-0/mainline
+		tag: latest
+	Libraries\LibSharedMedia-3.0:
+		url: svn://svn.wowace.com/wow/libsharedmedia-3-0/mainline/trunk
+		
+move-folders:
+	ElvUI_ChatTweaks/Debug: ElvUI_ChatTweaks_Debug
+	ElvUI_ChatTweaks/Extra: ElvUI_ChatTweaks_Extra
+	ElvUI_ChatTweaks/Spam: ElvUI_ChatTweaks_Spam
+
+license-output: LICENSE.TXT

@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">	
+	<Script file="..\ElvUI_ChatTweaks\Modules\AutoSetRole.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\Calculator.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\ColorRolls.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\Companions.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\DamageMeters.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\FakeAchievement.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\FunFilters.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\GoldCalculator.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\Magic8Ball.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\PetBattles.lua" />
+</Ui>
