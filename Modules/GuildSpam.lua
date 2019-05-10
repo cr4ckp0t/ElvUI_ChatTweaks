@@ -26,7 +26,7 @@ local defaults = {
 local function ChannelFilter(_, event, message, player, _, _, _, _, channel, _, _, _, id)
 	if id == savedID then return result else savedID = id end
 	if chanid == 0 or chanid == 25 then result = nil; return false end
-	if not CanComplainChat(id) or UnitIsInMyGuild(player) then result = nil; return false end
+	if UnitIsInMyGuild(player) then result = nil; return false end
 	for i = 1, #Module.triggers do
 		if message:lower():find(Module.triggers[i]) then
 			if db.notify then
@@ -48,8 +48,7 @@ end
 
 local function WhisperFilter(_, event, message, player)
 	-- do our checks
-	if not db.whispers or players[player] or not CanComplainChat(player) or
-		UnitIsInMyGuild(player) or UnitInRaid(player) or UnitInParty(player) then return false end
+	if not db.whispers or players[player] or UnitIsInMyGuild(player) or UnitInRaid(player) or UnitInParty(player) then return false end
 	
 	-- look for matches
 	for i = 1, #Module.whispers do
@@ -123,8 +122,8 @@ function Module:GetOptions()
 				order = 15,
 				name = L["Invites"],
 				desc = L["Filter guild invites."],
-				get = function() return InterfaceOptionsControlsPanelBlockGuildInvites:GetValue() end,
-				set = function(_, value) InterfaceOptionsControlsPanelBlockGuildInvites:SetValue(value) end,
+				get = function() return InterfaceOptionsSocialPanelBlockGuildInvites:GetValue() end,
+				set = function(_, value) InterfaceOptionsSocialPanelBlockGuildInvites:SetValue(value) end,
 			},
 			notify = {
 				type = "toggle",

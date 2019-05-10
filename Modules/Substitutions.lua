@@ -3,6 +3,7 @@
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- heavily influenced by prat's substitutions module
+local E, _, V, P, G = unpack(ElvUI)
 local Module = ElvUI_ChatTweaks:NewModule("Substitutions", "AceConsole-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Substitutions"]
@@ -272,19 +273,19 @@ Module.patterns = {
 	-- players mana
 	["%%pm%%"] = {
 		name = L["Player's Mana"],
-		func = function() return UnitMana("player") end,
+		func = function() return UnitPower("player", 0) end,
 	},
 	["%%pmm%%"] = {
 		name = L["Player's Max Mana"],
-		func = function() return UnitManaMax("player") end,
+		func = function() return UnitPowerMax("player", 0) end,
 	},
 	["%%pmp%%"] = {
 		name = L["Player's Mana Percent"],
-		func = function() return math.floor(UnitMana("player") / UnitManaMax("player") * 100) end,
+		func = function() return math.floor(UnitPower("player", 0) / UnitPowerMax("player", 0) * 100) end,
 	},
 	["%%pmd%%"] = {
 		name = L["Player's Mana Deficit"],
-		func = function() return UnitManaMax("player") - UnitMana("player") end,
+		func = function() return UnitPowerMax("player", 0) - UnitPower("player", 0) end,
 	},
 	
 	-- location information
@@ -295,22 +296,28 @@ Module.patterns = {
 	["%%pos%%"] = {
 		name = L["Player's Location"],
 		func = function()
-			local x, y = GetPlayerMapPosition("player")
-			return ("%d, %d"):format(math.floor((x * 100) + 0.5), math.floor((y * 100) + 0.5))
+			if E.MapInfo then
+				local x, y = E.MapInfo.x, E.MapInfo.y
+				return ("%d, %d"):format(math.floor((x * 100) + 0.5), math.floor((y * 100) + 0.5))
+			end
 		end,
 	},
 	["%%posx%%"] = {
 		name = L["Player's X-Coordinate"],
 		func = function()
-			local x, _ = GetPlayerMapPosition("player")
-			return math.floor((x * 100) + 0.5)
+			if E.MapInfo then
+				local x, _ = E.MapInfo.x, _
+				return math.floor((x * 100) + 0.5)
+			end
 		end,
 	},
 	["%%posy%%"] = {
 		name = L["Player's Y-Coordinate"],
 		func = function()
-			local _, y = GetPlayerMapPosition("player")
-			return math.floor((y * 100) + 0.5)
+			if E.MapInfo then
+				local _, y = _, E.MapInfo.y
+				return math.floor((y * 100) + 0.5)
+			end
 		end,
 	},
 	

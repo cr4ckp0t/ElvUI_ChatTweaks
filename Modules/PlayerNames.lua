@@ -362,7 +362,7 @@ end
 function Module:AddMessage(frame, text, ...)
 	if text and type(text) == "string" then
 		text = text:gsub("(|Hplayer:([^|:]+)([:%d+]*)([^|]*)|h%[([^%]]+)%]|h)(.-)$", changeName)
-		text = text:gsub("(|HBNplayer:%S-|k:)(%d-)(:%S-|h)%[(%S-)%](|?h?)(:?)", changeBNetName)
+		--text = text:gsub("(|HBNplayer:%S-|k:)(%d-)(:%S-|h)%[(%S-)%](|?h?)(:?)", changeBNetName)
 		text = text:gsub("(|HBNplayer%S-|k)(%d-)(:%S-BN_INLINE_TOAST_ALERT%S-|h)%[(%S-)%](|?h?)(:?)", fixLogin)
 	end
 	return self.hooks[frame].AddMessage(frame, text, ...)

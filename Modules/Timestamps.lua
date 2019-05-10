@@ -114,7 +114,7 @@ end
 
 function Module:AddMessage(frame, text, ...)
 	local id = frame:GetID()
-	if id and db.frames[id] and not(CHAT_TIMESTAMP_FORMAT) then
+	if id and db.frames and db.frames[id] and not(CHAT_TIMESTAMP_FORMAT) then
 		if not text then 
 			return self.hooks[frame].AddMessage(frame, text, ...)
 		end

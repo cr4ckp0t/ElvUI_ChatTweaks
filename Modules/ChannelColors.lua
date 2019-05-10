@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks Created By Lockslap (US, Bleeding Hollow)
--- Continued By Klix (EU, Twisting Nether)
+-- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
 -- Based on functionality provided by Prat and/or Chatter
+-- Module Created By Klix (EU, Twisting Nether)
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Channel Colors", "AceEvent-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)

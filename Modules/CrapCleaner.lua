@@ -37,7 +37,7 @@ local function filterText(self, event, message, player, ...)
 	-- only check "official" channels
 	if event == "CHAT_MSG_CHANNEL" and channel == 0 then return end
 	-- dont filter ourselves or guildies
-	if not CanComplainChat(player) or UnitIsInMyGuild(player) then return end
+	if UnitIsInMyGuild(player) then return end
 	
 	-- filter triggers
 	for i = 1, #db.triggers do

@@ -19,7 +19,7 @@ local defaults = {
 local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonName, {
 	type = "launcher",
 	text = ElvUI_ChatTweaks.addonName,
-	icon = [[Interface\Addons\ElvUI_ChatTweaks\Textures\icon.tga]],
+	icon = ElvUI_ChatTweaks.Icon,
 	OnClick = function(_, button)
 		if button == "LeftButton" then
 			if not IsShiftKeyDown() then

@@ -1,9 +1,8 @@
--- debug mode variable
-local debug = false
---[===[@alpha@
-debug = true
---@end-alpha@]===]
-
+-------------------------------------------------------------------------------
+-- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- Module Created By Klix (EU, Twisting Nether)
+-- Based on functionality provided by Prat and/or Chatter
+-------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Guild Recruitment", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0", "AceComm-3.0", "AceSerializer-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 local LibC = LibStub:GetLibrary("LibCompress")

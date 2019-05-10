@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks Created By Lockslap (US, Bleeding Hollow)
--- Continued By Klix (EU, Twisting Nether)
+-- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Who Taunted", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")

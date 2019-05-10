@@ -12,7 +12,10 @@ local format = string.format
 local clearCMD = L["|cff00ff00%s|r or |cff00ff00%s|r %s"]
 
 function Module:ClearChat(frame)
-	if frame:GetObjectType() == "ScrollingMessageFrame" then
+	local vartype = type(frame)
+	local type = frame:GetObjectType() or nil
+	
+	if type == "Frame" and frame.Clear then
 		frame:Clear()
 	end
 end

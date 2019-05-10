@@ -1,7 +1,7 @@
 ## Interface: 80100
 ## Author: Lockslap
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 8.0
+## Version: 8.0.1
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
@@ -54,4 +54,3 @@ SharedMedia.lua
 ElvUI_ChatTweaks.lua
 StaticPopups.lua
 Modules.xml
-ChangeLog.lua

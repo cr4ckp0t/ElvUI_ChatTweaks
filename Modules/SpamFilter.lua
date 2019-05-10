@@ -121,13 +121,13 @@ local function Filter(_, event, message, player, _, _, _, flag, channel, _, _, _
 		prevLine = line
 		
 		if event == "CHAT_MSG_CHANNEL" and channel == 0 then result = nil; return end
-		if not CanComplainChat(line) or UnitIsInMyGuild(player) or UnitInRaid(player) or UnitInParty(player) then result = nil; return end
+		if UnitIsInMyGuild(player) or UnitInRaid(player) or UnitInParty(player) then result = nil; return end
 		if event == "CHAT_MSG_WHISPER" then
 			if flag == "GM" then result = nil; return end
 			for i = 1, select(2, BNGetNumFriends()) do
-				local toons = BNGetNumFriendToons(i)
+				local toons = BNGetNumFriendGameAccounts(i)
 				for j = 1, toons do
-					local _, rName, rGame = BNGetFriendToonInfo(i, j)
+					local _, rName, rGame = BNGetFriendGameAccountInfo(i, j)
 					if rName == player and rGame == "WoW" then result = nil; return end
 				end
 			end

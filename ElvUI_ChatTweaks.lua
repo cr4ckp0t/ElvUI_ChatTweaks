@@ -589,16 +589,9 @@ ElvUI_ChatTweaks.options.args = {
 		name = L["Disable All Modules"],
 		func = function() StaticPopup_Show("ECT_DISABLE_ALL") end,
 	},
-	changelog = {
-		order = 10,
-		type = "execute",
-		name = L["Changelog"],
-		desc = L["Click to toggle the changelog window. This will also close this window."],
-		func = function() ElvUI_ChatTweaks:ToggleChangeLog(); ElvUI_ChatTweaks:ToggleConfig(); end,
-	},
 	toggleEC = {
 		type = "execute",
-		order = 11,
+		order = 10,
 		name = L["Open ElvUI's Config"],
 		desc = L["Click to toggle ElvUI's config window.  This will also close this window."],
 		func = function() ElvUI_ChatTweaks:ToggleConfig(); E:ToggleConfig(); end,

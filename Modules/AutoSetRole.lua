@@ -8,9 +8,6 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Auto Set Role"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
-local role, spec, specName = nil, nil, nil
-local hasPrinted = false
-
 local db, options
 local defaults = {
 	global = {
@@ -18,59 +15,44 @@ local defaults = {
 	},
 }
 
-function Module:SetRole(event)
-	local isSet = event == "ACTIVE_TALENT_GROUP_CHANGED" and false or true
-	
-	spec = GetSpecialization()
-	if not spec then return end
-	role = GetSpecializationRole(spec)
-	specName = spec and select(2, GetSpecializationInfo(spec))
-	
-	if InCombatLockdown() then
-		if db.notify then
-			self:Print(L["Role will not be set while in combat."])
-		end
-	else
-		if spec == nil and not isSet then
-			UnitSetRole("player", "NONE")
-			
-			if db.notify then
-				self:Print(L["No role was set because you have no specialization."])
-				hasPrinted = true
-			end
-		else
-			UnitSetRole("player", role)
-			
-			if db.notify then
-				self:Print((L["Role Set: %s%s|r"]):format(self.hex, role))
-				hasPrinted = true
-			end
-		end
-	end
+function Module:SetRole()
+    if not (UnitInRaid("player") or UnitInParty("player")) then return end
+
+    local spec = GetSpecialization()
+    if not spec then return end
+
+    local curRole = UnitGroupRolesAssigned("player")
+    local specRole = GetSpecializationRole(spec)
+    if curRole ~= specRole then
+        if InCombatLockdown() then
+            if db.notify then
+                self:Print(L["Role will not be set while in combat."])
+            end
+        else
+            UnitSetRole("player", specRole)
+
+            if db.notify then
+                self:Print(L["Role Set: %s%s|r"]:format(self.hex, specRole))
+            end
+        end
+    end
 end
 
 function Module:OnEnable()
 	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED", "SetRole")
 	self:RegisterEvent("GROUP_ROSTER_UPDATE", "SetRole")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "SetRole")
-	
+
 	-- auto accept role popup
 	RolePollPopup:SetScript("OnShow", function() RolePollPopupAcceptButton:Click() end)
-	
-	-- so there's no print spam
-	self.resetPrint = self:ScheduleRepeatingTimer(function() hasPrinted = false end, 30)
 end
 
 function Module:OnDisable()
 	self:UnregisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	self:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	self:UnregisterEvent("PLAYER_REGEN_ENABLED")
-	
+
 	RolePollPopup:SetScript("OnShow", nil)
-	
-	-- disable it
-	self:CancelTimer(self.resetPrint)
-	self.resetPrint = nil
 end
 
 function Module:OnInitialize()

@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks Created By Lockslap (US, Bleeding Hollow)
--- Continued By Klix (EU, Twisting Nether)
+-- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
+
 local Module = ElvUI_ChatTweaks:NewModule("Easy Channel", "AceConsole-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Easy Channel"]..ElvUI_ChatTweaks.NewSign
