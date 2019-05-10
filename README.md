@@ -1,1 +1,1 @@
-# ElvUI_ChatTweaks
+# ElvUI Chat Tweaks
