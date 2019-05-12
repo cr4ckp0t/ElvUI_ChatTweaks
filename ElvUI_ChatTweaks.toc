@@ -1,17 +1,11 @@
 ## Interface: 80100
 ## Author: Lockslap
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 8.0.2
+## Version: 8.0.3
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
 ## SavedVariables: ElvUI_ChatTweaksDB
-
-## X-Category: Chat, Plugins
-## X-Author-Server: Bleeding Hollow, US
-## X-Author-Faction: Alliance
-## X-Paypal: me@adamko.ch
-## X-Credits: Elv (for ElvUI)
 
 Libraries\LibStub\LibStub.lua
 Libraries\CallbackHandler-1.0\CallbackHandler-1.0.xml

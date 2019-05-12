@@ -2,6 +2,8 @@
 -- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
+local E, _, V, P, G = unpack(ElvUI)
+local AB = E:GetModule("ActionBars")
 local Module = ElvUI_ChatTweaks:NewModule("Minimap Button", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Minimap Button"]
@@ -22,16 +24,24 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 	icon = ElvUI_ChatTweaks.Icon,
 	OnClick = function(_, button)
 		if button == "LeftButton" then
-			if not IsShiftKeyDown() then
-				ElvUI_ChatTweaks:ToggleConfig()
-			else
+			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_ENABLE_ALL")
+			elseif IsControlKeyDown() then
+				E:ToggleConfig()
+			elseif IsAltKeyDown() then
+				ReloadUI()
+			else
+				ElvUI_ChatTweaks:ToggleConfig()
 			end
 		elseif button == "RightButton" then
-			if not IsShiftKeyDown() then
-				ElvUI_ChatTweaks:PrintHelp()
-			else
+			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_DISABLE_ALL")
+			elseif IsControlKeyDown() then
+				E:ToggleConfigMode()
+			elseif IsAltKeyDown() then
+				AB:ActivateBindMode()
+			else
+				ElvUI_ChatTweaks:PrintHelp()
 			end
 		end
 	end,
@@ -53,6 +63,10 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 		tooltip:AddDoubleLine(L["Right Click"], L["Command Help"], 1, 1, 1, 1, 1, 0)
 		tooltip:AddDoubleLine(L["Shift + Left Click"], L["Enable All Modules"], 1, 1, 1, 1, 1, 0)
 		tooltip:AddDoubleLine(L["Shift + Right Click"], L["Disable All Modules"], 1, 1, 1, 1, 1, 0)
+		tooltip:AddDoubleLine(L["Control + Left Click"], L["Open ElvUI Config"], 1, 1, 1, 1, 1, 0)
+		tooltip:AddDoubleLine(L["Control + Right Click"], L["Toggle Anchors"], 1, 1, 1, 1, 1, 0)
+		tooltip:AddDoubleLine(L["Alt + Left Click"], L["ReloadUI"], 1, 1, 1, 1, 1, 0)
+		tooltip:AddDoubleLine(L["Alt + Right Click"], L["Toggle Actionbar Keybinds"], 1, 1, 1, 1, 1, 0)
 		
 		tooltip:Show()		
 	end,
