@@ -264,7 +264,7 @@ local function fixLogin(head, id, misc, who, extra, colon)
 end
 
 local function changeBNetName(misc, id, moreMisc, fakeName, tag, colon)
-	local _, charName, _, _, _, _, _, english = BNGetToonInfo(id)
+	local _, charName, _, _, _, _, _, english = BNGetGameAccountInfo(id)
 	local left, right = "", ""
 	if chatName and charName ~= "" then
 		if storedName then storedName[id] = charName end
@@ -508,7 +508,7 @@ function Module:OnEnable()
 	if Module.db.global.noRealNames then
 		local _, n = BNGetNumFriends()
 		for i = 1, n do
-			local _, _, _, toon, id = BNGetFriendInfo(i)
+			local _, _, _, _, toon, id, _ = BNGetFriendInfo(i)
 			storedName[id] = toon
 		end
 	end
