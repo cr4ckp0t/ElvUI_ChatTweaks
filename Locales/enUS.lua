@@ -6,7 +6,7 @@ local debug = false
 debug = true
 --@end-debug@
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
-local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, debug)
+local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, not debug)
 if not L then return end
 
 L["    When I first started using ElvUI around the beginning of Cataclysm's release I noticed that there were some chat functionality that I wanted, but wasn't included with ElvUI.  I came across Prat and Chatter, but found that they had too many modules that I didn't want and both addons do use a fair bit of memory.  So I decided to write my own version, which is when ElvUI_ChatTweaks was born.  Since then I have made sure that this addon is as bug free as possible, as well as being up to date with the latest API available, and I am constantly adding new functionality.  If there's any features you'd like to see added please contact me and I'll see what I can do.\n\nThanks,\n|cffffff00Lockslap|r"] = true
@@ -118,7 +118,7 @@ L["Allows you to change the default font settings for the chat frames.\n\n|cffff
 L["Allows you to check the status of the A Test of Valor quest given by Wrathion for the legendary gems by using the |cff00ff96/tov|r chat command."] = true
 L["Allows you to color the pet battle info messages, and determine which chat frame to send them to.\n\nI am aware that some of the features of this module don't really pertain to the chat, but I couldn't really justify an entirely new addon.  So I just snuck them into here."] = true
 L["Allows you to reroute auction house messages to a different chat frame."] = true
-L["Allows you to use some fun filters on various chat channels.\n\n|cffff0000This will break any links in the chat message.|r\n\n|cffffff00Filters:|r\n13375p34|<, ALL UPPERCASE, all lowercase, Capitalize Words, AlTeRnAtInG CaPs, BeTTeR ALTeRNaTiNG CaPS, sretteL esreveR, Gr‡vË LËttËrs, ¡c˙tÈ LÈttÈrs, –Ô‰rÎsÔs LÎttÎrs, CÓrc˚mflÍx LÍttÍrs"] = true
+L["Allows you to use some fun filters on various chat channels.\n\n|cffff0000This will break any links in the chat message.|r\n\n|cffffff00Filters:|r\n13375p34|<, ALL UPPERCASE, all lowercase, Capitalize Words, AlTeRnAtInG CaPs, BeTTeR ALTeRNaTiNG CaPS, sretteL esreveR, Gr√†v√® L√®tt√®rs, √Åc√∫t√© L√©tt√©rs, √ê√Ø√§r√´s√Øs L√´tt√´rs, C√Ærc√ªmfl√™x L√™tt√™rs"] = true
 L["Alt + Left Click"] = true
 L["Alt + Right Click"] = true
 L["Alt Names"] = true
@@ -757,7 +757,7 @@ L["Provides basic chat subtitutions."] = true
 L["Provides keybinds to make talking in a specific chat easier."] = true
 L["Provides options to color player names, add player levels, and add tab completion of player names."] = true
 L["Provides |cff00ff00/ginv|r, an alternative to |cff00ff00/ginvite|r command, for us lazy folks."] = true
-L["Provides |cff00ff00/minv|r to invite multiple people at once. Also adds custom abbreviations for characters which are invited often.\n\nModule Written by Bjˆrn Benjamin Hiller <bjoern.hiller@gmail.com>"] = true
+L["Provides |cff00ff00/minv|r to invite multiple people at once. Also adds custom abbreviations for characters which are invited often.\n\nModule Written by Bj√∂rn Benjamin Hiller <bjoern.hiller@gmail.com>"] = true
 L["Put each emote on a separate line.\nSeparate the command from the text with a colon (\":\")."] = true
 L["Quality Notification"] = true
 L["Quality"] = true
