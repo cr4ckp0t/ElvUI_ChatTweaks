@@ -25,7 +25,7 @@ local db, options
 local defaults = {
 	global = {
 		channels = {
-			--[CHAT_MSG_SAY] = "[S]",
+			[CHAT_MSG_SAY] = "[S]",
 			[CHAT_MSG_GUILD] = "[G]",
 			[CHAT_MSG_OFFICER] = "[O]",
 			[CHAT_MSG_PARTY] = "[P]",
@@ -191,6 +191,7 @@ function Module:AddMessage(frame, text, ...)
 		text = gsub(text, "^(%[(" .. L["Raid Warning"] .. ")%]) ", replaceChannelRW)
 	end
 	if db.channels then
+		text = gsub(text, L["(|Hplayer.-|h) says:"], (db.channels[CHAT_MSG_SAY]) .. (db.addSpace and " %1:" or "%1:"))
 		text = gsub(text, L["To (|Hplayer.-|h):"], (db.channels["Whisper To"] or "[W:From]") .. (db.addSpace and " %1:" or "%1:"))
 		text = gsub(text, L["(|Hplayer.-|h) whispers:"], (db.channels["Whisper From"] or "[W:To]") .. (db.addSpace and " %1:" or "%1:"))
 		text = gsub(text, L["To (|HBNplayer.-|h):"], (db.channels["BN Whisper To"] or "[BN:From]") .. (db.addSpace and " %1:" or "%1:"))
