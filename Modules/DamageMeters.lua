@@ -30,7 +30,8 @@ local firstLines = {
 	"^Skada报告(.*)的(.*), (.*)到(.*):$",							-- Skada zhCN, might change in new Skada version
 	"^(.*)的報告來自(.*)，從(.*)到(.*)：$",								-- Skada zhTW, might change in new Skada version
 	"^Skada: (.*) for (.*), (.*) - (.*):$",					-- Better Skada support player details
-	"^(.*) Done for (.*)$"									-- TinyDPS
+	"^(.*) Done for (.*)$",									-- TinyDPS
+	"^Details(.*)$",										-- Details!
 }
 local nextLines = {
 	"^(%d+). (.*)$",										-- Recount and Skada

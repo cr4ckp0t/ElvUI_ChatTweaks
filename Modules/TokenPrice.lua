@@ -57,10 +57,10 @@ function Module:TOKEN_MARKET_PRICE_UPDATED()
 	if ShowTokenPrice then
 		local currentPrice = C_WowTokenPublic.GetCurrentMarketPrice()
 		if not currentPrice or currentPrice == nil or currentPrice == '' or currentPrice == 0 then
-			print("The Blizzard token API is down.")
+			ElvUI_ChatTweaks:Print("The Blizzard token API is down.")
 			return
 		end
-		print("Current token price:|cffFFFF00 " .. comma_value(GetMoneyString(currentPrice)) .. "")
+		ElvUI_ChatTweaks:Print("Current token price:|cffFFFF00 " .. comma_value(GetMoneyString(currentPrice)) .. "")
 		ShowTokenPrice = false
 	end
 end
