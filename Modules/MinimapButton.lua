@@ -37,7 +37,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_DISABLE_ALL")
 			elseif IsControlKeyDown() then
-				E:ToggleConfigMode()
+				E:ToggleMoveMode()
 			elseif IsAltKeyDown() then
 				AB:ActivateBindMode()
 			else
