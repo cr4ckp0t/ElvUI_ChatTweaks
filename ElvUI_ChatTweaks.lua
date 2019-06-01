@@ -113,7 +113,7 @@ function ElvUI_ChatTweaks:OnInitialize()
 					name = L["Show ElvUI Chat Tweaks Config Window"],
 					desc = L["Click to open the ElvUI Chat Tweaks config window.  This will also close ElvUI's config window."],
 					width = "double",
-					func = function() ElvUI_ChatTweaks:ToggleConfig(true); E:ToggleConfig(); end,
+					func = function() ElvUI_ChatTweaks:ToggleConfig(true); E:ToggleOptionsUI(); end,
 				},
 			},
 		}
@@ -178,52 +178,6 @@ function ElvUI_ChatTweaks:OnEnable()
 	
 	AceConfig:RegisterOptionsTable(self.addonName, self.options)
 	AceConfigDialog:SetDefaultSize(self.addonName, DEFAULT_WIDTH, DEFAULT_HEIGHT)
-
-	--self.options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
-	--AceConfig:RegisterOptionsTable(self.addonName .. "Profiles", self.options.args.profiles)
-	--self.options.args.profiles.order = -10
-	
-	--[[self.options.args.about = {
-		type = "group",
-		order = -9,
-		name = L["About"],
-		args = {}
-	}
-	
-	local i = 1
-	for _, field in pairs(fields) do
-		local val = GetAddOnMetadata(self.addonName, field)
-		if val then
-			self.options.args.about.args[field] = {
-				type = "description",
-				order = i,
-				width = "normal",
-				name = fieldName:format(field:gsub("X%-", "")),
-			}
-			i = i + 1
-			self.options.args.about.args[field .. "_value"] = {
-				type = "description",
-				order = i,
-				width = "double",
-				name = val,
-			}
-			i = i + 1
-		end
-	end
-	
-	self.options.args.about.args.dummy = {
-		type = "description",
-		order = 99,
-		width = "full",
-		name = "\n\n",
-	}
-	
-	self.options.args.about.args.about = {
-		type = "description",
-		order = 100,
-		width = "full",
-		name = L["    When I first started using ElvUI around the beginning of Cataclysm's release I noticed that there were some chat functionality that I wanted, but wasn't included with ElvUI.  I came across Prat and Chatter, but found that they had too many modules that I didn't want and both addons do use a fair bit of memory.  So I decided to write my own version, which is when ElvUI_ChatTweaks was born.  Since then I have made sure that this addon is as bug free as possible, as well as being up to date with the latest API available, and I am constantly adding new functionality.  If there's any features you'd like to see added please contact me and I'll see what I can do.\n\nThanks,\n|cffffff00Lockslap|r"],
-	}]]
 	
 	self:AddMenuHook(self, {
 		text = L["ElvUI ChatTweaks"],
@@ -594,7 +548,7 @@ ElvUI_ChatTweaks.options.args = {
 		order = 10,
 		name = L["Open ElvUI's Config"],
 		desc = L["Click to toggle ElvUI's config window.  This will also close this window."],
-		func = function() ElvUI_ChatTweaks:ToggleConfig(); E:ToggleConfig(); end,
+		func = function() ElvUI_ChatTweaks:ToggleConfig(); E:ToggleOptionsUI(); end,
 	},
 }
 
