@@ -373,19 +373,19 @@ Module.patterns = {
 	-- target mana
 	["%%tm%%"] = {
 		name = L["Target's Mana"],
-		func = function() return UnitExists("target") and UnitMana("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPower("target") or L["<notarget>"] end,
 	},
 	["%%tmm%%"] = {
 		name = L["Target's Max Mana"],
-		func = function() return UnitExists("target") and UnitManaMax("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPowerMax("target") or L["<notarget>"] end,
 	},
 	["%%tmp%%"] = {
 		name = L["Target's Mana Percent"],
-		func = function() return UnitExists("target") and math.floor(UnitMana("target") / UnitManaMax("target") * 100) or L["<notarget>"] end,
+		func = function() return UnitExists("target") and math.floor(UnitPower("target") / UnitPowerMax("target") * 100) or L["<notarget>"] end,
 	},
 	["%%tmd%%"] = {
 		name = L["Target's Mana Deficit"],
-		func = function() return UnitExists("target") and UnitManaMax("target") - UnitMana("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPowerMax("target") - UnitPower("target") or L["<notarget>"] end,
 	},
 	
 	-- date/time subs
