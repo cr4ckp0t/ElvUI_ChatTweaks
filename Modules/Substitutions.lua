@@ -273,19 +273,19 @@ Module.patterns = {
 	-- players mana
 	["%%pm%%"] = {
 		name = L["Player's Mana"],
-		func = function() return UnitPower("player", 0) end,
+		func = function() return UnitPower("player") end,
 	},
 	["%%pmm%%"] = {
 		name = L["Player's Max Mana"],
-		func = function() return UnitPowerMax("player", 0) end,
+		func = function() return UnitPowerMax("player") end,
 	},
 	["%%pmp%%"] = {
 		name = L["Player's Mana Percent"],
-		func = function() return math.floor(UnitPower("player", 0) / UnitPowerMax("player", 0) * 100) end,
+		func = function() return math.floor(UnitPower("player") / UnitPowerMax("player") * 100) end,
 	},
 	["%%pmd%%"] = {
 		name = L["Player's Mana Deficit"],
-		func = function() return UnitPowerMax("player", 0) - UnitPower("player", 0) end,
+		func = function() return UnitPowerMax("player") - UnitPower("player") end,
 	},
 	
 	-- location information
