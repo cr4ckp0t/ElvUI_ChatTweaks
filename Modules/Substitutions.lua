@@ -298,6 +298,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local x, y = E.MapInfo.x, E.MapInfo.y
+				if (x == nil or y == nil) then
+					return L["<no location>"]
+				end
 				return ("%d, %d"):format(math.floor((x * 100) + 0.5), math.floor((y * 100) + 0.5))
 			end
 		end,
@@ -307,6 +310,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local x, _ = E.MapInfo.x, _
+				if (x == nil) then
+					return L["<no location>"]
+				end
 				return math.floor((x * 100) + 0.5)
 			end
 		end,
@@ -316,6 +322,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local _, y = _, E.MapInfo.y
+				if (y == nil) then
+					return L["<no location>"]
+				end
 				return math.floor((y * 100) + 0.5)
 			end
 		end,
