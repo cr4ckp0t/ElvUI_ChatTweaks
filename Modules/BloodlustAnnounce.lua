@@ -1,13 +1,24 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 local Module = ElvUI_ChatTweaks:NewModule("Bloodlust Announce", "AceConsole-3.0", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Bloodlust Announce"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local CreateFrame = _G["CreateFrame"]
+local IsAddOnLoaded = _G["IsAddOnLoaded"]
+local CombatLogGetCurrentEventInfo = _G["CombatLogGetCurrentEventInfo"]
+local GetNumGroupMembers = _G["GetNumGroupMembers"]
+local UnitPlayerOrPetInParty = _G["UnitPlayerOrPetInParty"]
+local UnitPlayerOrPetInRaid = _G["UnitPlayerOrPetInRaid"]
+local IsInGroup = _G["IsInGroup"]
+local IsInRaid = _G["IsInRaid"]
+local UnitName = _G["UnitName"]
+local GetSpellLink = _G["GetSpellLink"]
+local C_Timer_After = C_Timer.After
 
 local Drums = {
 	[146555] = true, 	-- Drums of Rage (MoP)
@@ -78,7 +89,7 @@ end
 
 function Module:OnEnable()
 	if IsAddOnLoaded("ElvUI_KlixUI") and not db.hidemessage then 
-		C_Timer.After(0.75, function() ElvUI_ChatTweaks:Print(L["Bloodlust Announce is disabled, locate it under |cfff960d9KlixUI|r settings instead."]) end)
+		C_Timer_After(0.75, function() ElvUI_ChatTweaks:Print(L["Bloodlust Announce is disabled, locate it under |cfff960d9KlixUI|r settings instead."]) end)
 	else
 		self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 		self:RegisterEvent("PLAYER_REGEN_DISABLED")

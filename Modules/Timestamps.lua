@@ -1,11 +1,17 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Timestamps", "AceHook-3.0", "AceEvent-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Timestamps"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local IsShiftKeyDown = _G["IsShiftKeyDown"]
+local BNSendWhisper = _G["BNSendWhisper"]
+local GetCVar = _G["GetCVar"]
+local SetCVar = _G["SetCVar"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
 
 local format = string.format
 local strsub = string.sub

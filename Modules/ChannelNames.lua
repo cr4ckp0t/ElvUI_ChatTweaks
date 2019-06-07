@@ -1,13 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 local Module = ElvUI_ChatTweaks:NewModule("Channel Names", "AceConsole-3.0", "AceHook-3.0", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Channel Names"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local EnumerateServerChannels = _G["EnumerateServerChannels"]
+local GetChannelList = _G["GetChannelList"]
 
 
 local gsub = string.gsub

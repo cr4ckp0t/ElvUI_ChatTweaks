@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- Based on BadBoy by funkydude
@@ -7,6 +7,19 @@ local Module = ElvUI_ChatTweaks:NewModule("Spam Filter", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Spam Filter"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local CanComplainChat = _G["CanComplainChat"]
+local ReportPlayer = _G["ReportPlayer"]
+local UnitIsInMyGuild = _G["UnitIsInMyGuild"]
+local UnitInRaid = _G["UnitInRaid"]
+local UnitInParty = _G["UnitInParty"]
+local BNGetNumFriends = _G["BNGetNumFriends"]
+local BNGetNumFriendGameAccounts = _G["BNGetNumFriendGameAccounts"]
+local BNGetFriendGameAccountInfo = _G["BNGetFriendGameAccountInfo"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local SetCVar = _G["SetCVar"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 
 local prevLineID, prevWarn, result = 0, 0, nil
 local chatLines, chatPlayers = {}, {}

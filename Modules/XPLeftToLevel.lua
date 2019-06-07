@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("XP Left To Level", "AceConsole-3.0", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["XP Left To Level"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitXPMax = _G["UnitXPMax"]
+local UnitXP = _G["UnitXP"]
+local GetXPExhaustion = _G["GetXPExhaustion"]
 
 local db, options
 local defaults = {

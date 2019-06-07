@@ -1,11 +1,13 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Role Poll Command", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Role Poll Command"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local InitiateRolePoll = _G["InitiateRolePoll"]
 
 function Module:OnEnable()
 	self:RegisterChatCommand("role", function() InitiateRolePoll() end)

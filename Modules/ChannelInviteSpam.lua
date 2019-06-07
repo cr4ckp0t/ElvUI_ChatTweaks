@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local E, _, _, _, _, _ = unpack(ElvUI)
@@ -7,6 +7,13 @@ local Module = ElvUI_ChatTweaks:NewModule("Channel Invite Spam", "AceEvent-3.0",
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Channel Invite Spam"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local DeclineInvite = _G["DeclineInvite"]
+local AddIgnore = _G["AddIgnore"]
+local DelIgnore = _G["DelIgnore"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 
 local db, options
 local defaults = {

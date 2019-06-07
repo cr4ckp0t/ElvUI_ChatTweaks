@@ -1,11 +1,18 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Companions", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
 local LibPetJournal = LibStub("LibPetJournal-2.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Companions"]
+
+local GetZoneText = _G["GetZoneText"]
+local C_PetJournal_GetNumPets = C_PetJournal.GetNumPets
+local C_PetJournal_GetPetInfoByIndex = C_PetJournal.GetPetInfoByIndex
+local C_PetJournal_GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
+local C_PetJournal_GetBattlePetLink = C_PetJournal.GetBattlePetLink
+local GetNumCompanions = _G["GetNumCompanions"]
 
 local db, defaults = {}, {
 	global = {
@@ -36,12 +43,12 @@ function Module:SendZoneList()
 	-- clear the filters
 	LibPetJournal:ClearFilters()
 	
-	for i = 1, C_PetJournal.GetNumPets(false) do
-		local id, speciesID, _, _, _, _, _, name, _, _, _, tooltip, _, _, _, _, _ = C_PetJournal.GetPetInfoByIndex(i)
+	for i = 1, C_PetJournal_GetNumPets(false) do
+		local id, speciesID, _, _, _, _, _, name, _, _, _, tooltip, _, _, _, _, _ = C_PetJournal_GetPetInfoByIndex(i)
 		if id and speciesID and name and tooltip and tooltip:find(zone) and not found[name] then
-			if C_PetJournal.GetPetInfoByPetID(id) ~= nil and (db.zone.filter == "none" or db.zone.filter == "owned") then
+			if C_PetJournal_GetPetInfoByPetID(id) ~= nil and (db.zone.filter == "none" or db.zone.filter == "owned") then
 				-- you have the pet
-				output = output .. C_PetJournal.GetBattlePetLink(id) .. ", "
+				output = output .. C_PetJournal_GetBattlePetLink(id) .. ", "
 				owned = owned + 1
 			elseif db.zone.filter == "none" or db.zone.filter == "unowned" then
 				-- you dont have it yet
@@ -80,13 +87,13 @@ end
 
 function Module:PetChatCommand(args)
 	local action, part, filter = self:GetArgs(args, 3)
-	local total, owned = C_PetJournal.GetNumPets(false)
+	local total, owned = C_PetJournal_GetNumPets(false)
 	
 	if action == "unique" then
 		-- determine how many unique pets
 		local count, pets = 0, {}
 		for _, id in LibPetJournal:IteratePetIDs() do
-			local species = C_PetJournal.GetPetInfoByPetID(id)
+			local species = C_PetJournal_GetPetInfoByPetID(id)
 			if not pets[species] then
 				count = count + 1
 				pets[species] = species
@@ -98,7 +105,7 @@ function Module:PetChatCommand(args)
 	elseif action == "duplicates" then
 		local count, pets = 0, {}
 		for _, id in LibPetJournal:IteratePetIDs() do
-			local species = C_PetJournal.GetPetInfoByPetID(id)
+			local species = C_PetJournal_GetPetInfoByPetID(id)
 			if not pets[species] then
 				pets[species] = species
 			else
@@ -110,7 +117,7 @@ function Module:PetChatCommand(args)
 	elseif action == "unowned" then
 		local count = 0
 		for i = 1, total do
-			local _, _, isOwned, _, _, _, _, _, _, _ = C_PetJournal.GetPetInfoByIndex(i, false)
+			local _, _, isOwned, _, _, _, _, _, _, _ = C_PetJournal_GetPetInfoByIndex(i, false)
 			if not isOwned then
 				count = count + 1
 			end
@@ -121,7 +128,7 @@ function Module:PetChatCommand(args)
 		local unique, dupes, totalPets = 0, 0 ,0
 		local pets = {}
 		for _, id in LibPetJournal:IteratePetIDs() do
-			local species = C_PetJournal.GetPetInfoByPetID(id)
+			local species = C_PetJournal_GetPetInfoByPetID(id)
 			if not pets[species] then
 				unique = unique + 1
 				pets[species] = species

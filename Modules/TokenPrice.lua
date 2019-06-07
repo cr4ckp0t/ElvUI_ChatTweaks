@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
@@ -7,6 +7,10 @@ local Module = ElvUI_ChatTweaks:NewModule("Token Price", "AceConsole-3.0", "AceE
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Token Price"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local C_WowTokenPublic_UpdateMarketPrice = C_WowTokenPublic.UpdateMarketPrice
+local C_WowTokenPublic_GetCurrentMarketPrice = C_WowTokenPublic.GetCurrentMarketPrice
+local GetMoneyString = _G["GetMoneyString"]
 
 local format = string.format
 
@@ -48,14 +52,14 @@ end
 
 function Module:PLAYER_LOGIN()
 	if db.login then
-		C_WowTokenPublic.UpdateMarketPrice()
+		C_WowTokenPublic_UpdateMarketPrice()
 		ShowTokenPrice = true	
 	end
 end
 
 function Module:TOKEN_MARKET_PRICE_UPDATED()
 	if ShowTokenPrice then
-		local currentPrice = C_WowTokenPublic.GetCurrentMarketPrice()
+		local currentPrice = C_WowTokenPublic_GetCurrentMarketPrice()
 		if not currentPrice or currentPrice == nil or currentPrice == '' or currentPrice == 0 then
 			ElvUI_ChatTweaks:Print("The Blizzard token API is down.")
 			return
@@ -69,9 +73,9 @@ function Module:OnEnable()
 	self:RegisterEvent("PLAYER_LOGIN")
 	self:RegisterEvent("TOKEN_MARKET_PRICE_UPDATED")
 	
-	self:RegisterChatCommand("tp", function() C_WowTokenPublic.UpdateMarketPrice(); ShowTokenPrice = true end)
-	self:RegisterChatCommand("token",	function() C_WowTokenPublic.UpdateMarketPrice(); ShowTokenPrice = true end)
-	self:RegisterChatCommand("tokens",	function() C_WowTokenPublic.UpdateMarketPrice(); ShowTokenPrice = true end)
+	self:RegisterChatCommand("tp", function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
+	self:RegisterChatCommand("token",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
+	self:RegisterChatCommand("tokens",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
 end
 
 function Module:OnDisable()

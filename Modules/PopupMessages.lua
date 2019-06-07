@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Popup Messages", "AceConsole-3.0", "LibSink-2.0")
@@ -9,6 +9,15 @@ local LSM = LibStub("LibSharedMedia-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Popup Messages"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local UnitName = _G["UnitName"]
+local GetMessageTypeColor = _G["GetMessageTypeColor"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
+local UIFrameIsFlashing = _G["UIFrameIsFlashing"]
+local UIFrameFlashRemoveFrame = _G["UIFrameFlashRemoveFrame"]
+local UIFrameFade = _G["UIFrameFade"]
 
 local keywords = {}
 

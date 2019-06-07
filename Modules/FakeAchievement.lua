@@ -1,13 +1,16 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 -- Module is based on Fake Achievement by lenwe-saralonde
 local Module = ElvUI_ChatTweaks:NewModule("Fake Achievement", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Fake Achievement"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitGUID = _G["UnitGUID"]
+local UnitName = _G["UnitName"]
+local GetAchievementInfo = _G["GetAchievementInfo"]
 
 local gsub, gmatch, find, match = string.gsub, string.gmatch, string.find, string.match
 

@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Developer Tools", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Developer Tools"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local GetBuildInfo = _G["GetBuildInfo"]
 
 local classes = {
 	[L["DEATHKNIGHT"]] = true,
@@ -213,5 +217,5 @@ function Module:GetOptions()
 end
 
 function Module:Info()
-	return L["Provides a few tools to help me (Lockslap), develop this addon as well as diagnose and fix any errors that are reported.\n\n|cff00ff00You can leave this addon disabled unless I (Lockslap) ask you to enable it for some debugging.|r"]
+	return L["Provides a few tools to help me (Crackpotx), develop this addon as well as diagnose and fix any errors that are reported.\n\n|cff00ff00You can leave this addon disabled unless I (Crackpotx) ask you to enable it for some debugging.|r"]
 end

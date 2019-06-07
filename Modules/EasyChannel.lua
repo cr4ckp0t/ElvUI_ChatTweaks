@@ -1,13 +1,18 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 local Module = ElvUI_ChatTweaks:NewModule("Easy Channel", "AceConsole-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Easy Channel"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local IsInGroup = _G["IsInGroup"]
+local IsInRaid = _G["IsInRaid"]
+local IsInGuild = _G["IsInGuild"]
+local IsShiftKeyDown = _G["IsShiftKeyDown"]
+local GetChannelName = _G["GetChannelName"]
 
 local ipairs, select, tostring = ipairs, select, tostring
 local strsub = string.sub

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- thanks to NinjaFish for the 5.51 fixes! :-)
@@ -8,6 +8,31 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 local AceTab = LibStub("AceTab-3.0")
 Module.name = L["Player Names"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitName = _G["UnitName"]
+local UnitClass = _G["UnitClass"]
+local ChatEdit_GetActiveWindow = _G["ChatEdit_GetActiveWindow"]
+local GetChannelName = _G["GetChannelName"]
+local BNGetToonInfo = _G["BNGetToonInfo"]
+local GetQuestDifficultyColor = _G["GetQuestDifficultyColor"]
+local GetNumFriends = _G["GetNumFriends"]
+local GetFriendInfo = _G["GetFriendInfo"]
+local IsInGuild = _G["IsInGuild"]
+local GetNumGuildMembers = _G["GetNumGuildMembers"]
+local GetGuildRosterInfo = _G["GetGuildRosterInfo"]
+local IsInRaid = _G["IsInRaid"]
+local GetNumGroupMembers = _G["GetNumGroupMembers"]
+local GetRaidRosterInfo = _G["GetRaidRosterInfo"]
+local IsInGroup = _G["IsInGroup"]
+local GetNumSubgroupMembers = _G["GetNumSubgroupMembers"]
+local UnitExists = _G["UnitExists"]
+local UnitIsPlayer = _G["UnitIsPlayer"]
+local UnitIsFriend = _G["UnitIsFriend"]
+local GetNumWhoResults = _G["GetNumWhoResults"]
+local GetWhoInfo = _G["GetWhoInfo"]
+local BNGetNumFriends = _G["BNGetNumFriends"]
+local BNGetFriendInfo = _G["BNGetFriendInfo"]
+local GetAddOnMemoryUsage = _G["GetAddOnMemoryUsage"]
 
 local gsub = string.gsub
 local match = string.match

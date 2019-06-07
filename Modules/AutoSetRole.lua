@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Auto Set Role", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
@@ -7,6 +7,15 @@ local E, _, V, P, G = unpack(ElvUI); --Inport: Engine, Locales, PrivateDB, Profi
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Auto Set Role"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local UnitInRaid = _G["UnitInRaid"]
+local UnitInParty = _G["UnitInParty"]
+local GetSpecialization = _G["GetSpecialization"]
+local UnitGroupRolesAssigned = _G["UnitGroupRolesAssigned"]
+local GetSpecializationRole = _G["GetSpecializationRole"]
+local InCombatLockdown = _G["InCombatLockdown"]
+local UnitSetRole = _G["UnitSetRole"]
 
 local db, options
 local defaults = {

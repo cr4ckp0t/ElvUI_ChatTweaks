@@ -1,13 +1,16 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 -- Modeled after BadBoy_CCleaner by funkydude
 local Module = ElvUI_ChatTweaks:NewModule("Crap Cleaner", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Crap Cleaner"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitIsInMyGuild = _G["UnitIsInMyGuild"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 
 local notifyString = L["Crap Cleaner blocked a message from %s%s|r."]
 

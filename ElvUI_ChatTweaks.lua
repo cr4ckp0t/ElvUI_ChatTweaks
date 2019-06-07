@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local E, _, V, P, G = unpack(ElvUI)
@@ -7,6 +7,20 @@ local _G = getfenv(0)
 local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
+
+local unpack = _G["unpack"]
+local GetAddOnMetadata = _G["GetAddOnMetadata"]
+local UIDropDownMenu_AddButton = _G["UIDropDownMenu_AddButton"]
+local collectgarbage = _G["collectgarbage"]
+local IsAddOnLoaded = _G["IsAddOnLoaded"]
+local C_ChatInfo_SendAddonMessage = C_ChatInfo.SendAddonMessage
+local IsInRaid = _G["IsInRaid"]
+local GetNumGroupMembers = _G["GetNumGroupMembers"]
+local IsLFGModeActive = _G["IsLFGModeActive"]
+local GetNumSubgroupMembers = _G["GetNumSubgroupMembers"]
+local IsInGuild = _G["IsInGuild"]
+local UnitName = _G["UnitName"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
 
 -- load globals
 ElvUI_ChatTweaks = LibStub("AceAddon-3.0"):NewAddon("ElvUI_ChatTweaks", "AceConsole-3.0", "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0")
@@ -83,28 +97,28 @@ function ElvUI_ChatTweaks:OnInitialize()
 	
 	-- add to elvui's config
 	LibStub("LibElvUIPlugin-1.0"):RegisterPlugin(self.addonName, function()
-		if not E.Options.args.lockslap then
-			E.Options.args.lockslap = {
+		if not E.Options.args.Crackpotx then
+			E.Options.args.Crackpotx = {
 				type = "group",
 				order = -2,
-				name = L["Plugins by |cff9382c9Lockslap|r"],
+				name = L["Plugins by |cff9382c9Crackpotx|r"],
 				args = {
 					thanks = {
 						type = "description",
 						order = 1,
-						name = L["Thanks for using and supporting my work!  -- |cff9382c9Lockslap|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."],
+						name = L["Thanks for using and supporting my work!  -- |cff9382c9Crackpotx|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."],
 					},
 				},
 			}
-		elseif not E.Options.args.lockslap.args.thanks then
-			E.Options.args.lockslap.args.thanks = {
+		elseif not E.Options.args.Crackpotx.args.thanks then
+			E.Options.args.Crackpotx.args.thanks = {
 				type = "description",
 				order = 1,
-				name = L["Thanks for using and supporting my work!  -- |cff9382c9Lockslap|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."],
+				name = L["Thanks for using and supporting my work!  -- |cff9382c9Crackpotx|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."],
 			}
 		end
 	
-		E.Options.args.lockslap.args.chattweaks = {
+		E.Options.args.Crackpotx.args.chattweaks = {
 			type = "group",
 			name = L["Chat Tweaks"],
 			args = {
@@ -434,14 +448,14 @@ function ElvUI_ChatTweaks:SendMessage()
 	end
 	
 	if inInstance and instanceType == "pvp" or instanceType == "arena" then
-		C_ChatInfo.SendAddonMessage("self", self.version, "INSTANCE_CHAT")
+		C_ChatInfo_SendAddonMessage("self", self.version, "INSTANCE_CHAT")
 	else
 		if IsInRaid() and GetNumGroupMembers() > 0 then
-			C_ChatInfo.SendAddonMessage("self", self.version, IsLFGModeActive(LE_LFG_CATEGORY_LFR) and "INSTANCE_CHAT" or "RAID")
+			C_ChatInfo_SendAddonMessage("self", self.version, IsLFGModeActive(LE_LFG_CATEGORY_LFR) and "INSTANCE_CHAT" or "RAID")
 		elseif not IsInRaid() and GetNumSubgroupMembers() > 0 then
-			C_ChatInfo.SendAddonMessage("self", self.version, IsLFGModeActive(LE_LFG_CATEGORY_LFD) and "INSTANCE_CHAT" or "PARTY")
+			C_ChatInfo_SendAddonMessage("self", self.version, IsLFGModeActive(LE_LFG_CATEGORY_LFD) and "INSTANCE_CHAT" or "PARTY")
 		elseif IsInGuild() then
-			C_ChatInfo.SendAddonMessage("self", self.version, "GUILD")
+			C_ChatInfo_SendAddonMessage("self", self.version, "GUILD")
 		end
 	end
 	

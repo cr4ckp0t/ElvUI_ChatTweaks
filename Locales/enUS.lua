@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -------------------------------------------------------------------------------
 local debug = false
 --@debug@
@@ -9,7 +9,7 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, debug)
 if not L then return end
 
-L["    When I first started using ElvUI around the beginning of Cataclysm's release I noticed that there were some chat functionality that I wanted, but wasn't included with ElvUI.  I came across Prat and Chatter, but found that they had too many modules that I didn't want and both addons do use a fair bit of memory.  So I decided to write my own version, which is when ElvUI_ChatTweaks was born.  Since then I have made sure that this addon is as bug free as possible, as well as being up to date with the latest API available, and I am constantly adding new functionality.  If there's any features you'd like to see added please contact me and I'll see what I can do.\n\nThanks,\n|cffffff00Lockslap|r"] = true
+L["    When I first started using ElvUI around the beginning of Cataclysm's release I noticed that there were some chat functionality that I wanted, but wasn't included with ElvUI.  I came across Prat and Chatter, but found that they had too many modules that I didn't want and both addons do use a fair bit of memory.  So I decided to write my own version, which is when ElvUI_ChatTweaks was born.  Since then I have made sure that this addon is as bug free as possible, as well as being up to date with the latest API available, and I am constantly adding new functionality.  If there's any features you'd like to see added please contact me and I'll see what I can do.\n\nThanks,\n|cffffff00Crackpotx|r"] = true
 L["   |cff00ff00%s|r - %s"] = true
 L["   |cff00ff00%s|r or |cff00ff00%s|r - %s"] = true
 L["   |cff00ff00/ct %s|r - %s"] = true
@@ -37,7 +37,7 @@ L["%s reputation needed until %s with %s."] = true
 L["%s, %s, %s  Player's Money\n"] = true
 L["%s, %s, %s  Player's Stats\n"] = true
 L["%sChat Tweaks|r"] = true
-L["%sElvUI Chat Tweaks|r by |cff9382c9Lockslap|r"] = true
+L["%sElvUI Chat Tweaks|r by |cff9382c9Crackpotx|r"] = true
 L["'s"] = true
 L["(|HBNplayer.-|h): whispers:"] = true
 L["(|Hplayer.-|h) whispers:"] = true
@@ -574,7 +574,7 @@ L["Lets you alt-click player names to invite them to your party."] = true
 L["Lets you set the justification of text in your chat frames."] = true
 L["Level Difference"] = true
 L["Level Location"] = true
-L["Level wasn't a number, tell Lockslap. Level was |cffff0000%s|r!"] = true
+L["Level wasn't a number, tell Crackpotx. Level was |cffff0000%s|r!"] = true
 L["Level: |cffffff00%s|r, Message: |cffffff00%s|r"] = true
 L["Link All Professions"] = true
 L["Log Lines"] = true
@@ -737,7 +737,7 @@ L["Players Level"] = true
 L["Plays a sound when one of your ElvUI keywords is found."] = true
 L["Plays a sound, of your choosing (via LibSharedMedia-3.0), whenever a message is received in a given channel."] = true
 L["Please DON'T use this. Reporting the spam is what gets the hacked accounts used by\nthe spammers closed down and realms cleaned up. Also, if many people report a spammer,\nthen that spammer looses the ability to chat meaning they can no longer spam, this benefits\neveryone."] = true
-L["Plugins by |cff9382c9Lockslap|r"] = true
+L["Plugins by |cff9382c9Crackpotx|r"] = true
 L["Popup Messages"] = true
 L["Popup"] = true
 L["PopupMessage"] = true
@@ -750,7 +750,7 @@ L["Prints a message in the chat with your remain XP needed to level up."] = true
 L["Prints module status."] = true
 L["Progress Updates"] = true
 L["Provides a /in command to delay the execution of code in macros and other settings."] = true
-L["Provides a few tools to help me (Lockslap), develop this addon as well as diagnose and fix any errors that are reported.\n\n|cff00ff00You can leave this addon disabled unless I (Lockslap) ask you to enable it for some debugging.|r"] = true
+L["Provides a few tools to help me (Crackpotx), develop this addon as well as diagnose and fix any errors that are reported.\n\n|cff00ff00You can leave this addon disabled unless I (Crackpotx) ask you to enable it for some debugging.|r"] = true
 L["Provides a |cff00ff00/gkick|r command, as it should be."] = true
 L["Provides a |cff00ff96/gs|r slash command to let you speak in your group (raid, party, or instance) automatically."] = true
 L["Provides basic chat subtitutions."] = true
@@ -936,7 +936,7 @@ L["Test mode"] = true
 L["Text Justification"] = true
 L["Text justification for ChatFrame %d."] = true
 L["Text to trigger the addon to answer a question."] = true
-L["Thanks for using and supporting my work!  -- |cff9382c9Lockslap|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."] = true
+L["Thanks for using and supporting my work!  -- |cff9382c9Crackpotx|r\n\n|cffff0000If you find any bugs, or have any suggestions for any of my addons, please open a ticket at that particular addon's page on CurseForge."] = true
 L["The amount of each material you'd like to farm.  If you want an unlimited amount simply put a 0.  You must add a quantity for every entry, and it must correspond to the same line in the other box."] = true
 L["The character in front of abbreviations to be recognised as such."] = true
 L["The chat window taunts will be announced in when the output is set to"] = true

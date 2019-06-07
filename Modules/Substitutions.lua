@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- heavily influenced by prat's substitutions module
@@ -8,6 +8,20 @@ local Module = ElvUI_ChatTweaks:NewModule("Substitutions", "AceConsole-3.0", "Ac
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Substitutions"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local UnitName = _G["UnitName"]
+local UnitClass = _G["UnitClass"]
+local UnitSex = _G["UnitSex"]
+local GetAverageItemLevel = _G["GetAverageItemLevel"]
+local UnitHealth = _G["UnitHealth"]
+local UnitHealthMax = _G["UnitHealthMax"]
+local UnitPower = _G["UnitPower"]
+local UnitPowerMax = _G["UnitPowerMax"]
+local GetRealZoneText = _G["GetRealZoneText"]
+local UnitExists = _G["UnitExists"]
+local UnitMana = _G["UnitMana"]
+local UnitManaMax = _G["UnitManaMax"]
 
 local db, options
 local defaults = {
