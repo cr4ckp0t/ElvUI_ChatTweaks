@@ -8,9 +8,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Damage Meters"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
-local ShowUIPanel = _G["ShowUIPanel"]
 local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
 local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
+local ShowUIPanel = _G["ShowUIPanel"]
 
 local upper = string.upper
 local format = string.format

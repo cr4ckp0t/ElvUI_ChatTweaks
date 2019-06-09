@@ -289,7 +289,7 @@ function Module:GetOptions()
 end
 
 function Module:Info()
-	return L["GR_description"]
+	return L["Send guild recruitment messages to various chat channels."]
 end
 
 --

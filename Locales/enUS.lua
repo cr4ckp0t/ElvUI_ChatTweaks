@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
+-- ElvUI ChatTweaks By Crackpotx (US, Lightbringer)
 -------------------------------------------------------------------------------
 local debug = false
 --@debug@
@@ -9,7 +9,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, debug)
 if not L then return end
 
-L["    When I first started using ElvUI around the beginning of Cataclysm's release I noticed that there were some chat functionality that I wanted, but wasn't included with ElvUI.  I came across Prat and Chatter, but found that they had too many modules that I didn't want and both addons do use a fair bit of memory.  So I decided to write my own version, which is when ElvUI_ChatTweaks was born.  Since then I have made sure that this addon is as bug free as possible, as well as being up to date with the latest API available, and I am constantly adding new functionality.  If there's any features you'd like to see added please contact me and I'll see what I can do.\n\nThanks,\n|cffffff00Crackpotx|r"] = true
 L["   |cff00ff00%s|r - %s"] = true
 L["   |cff00ff00%s|r or |cff00ff00%s|r - %s"] = true
 L["   |cff00ff00/ct %s|r - %s"] = true
@@ -56,7 +55,6 @@ L["AFK/DND Filter"] = true
 L["AOE"] = true
 L["Abbreviate your favourites to save typing. Format is short1:long1, short2:long2, ... shortN:longN."] = true
 L["Abbreviations"] = true
-L["About"] = true
 L["Achievement Filter"] = true
 L["Achievement Messages"] = true
 L["Achievement for %s%s|r: %s"] = true
@@ -118,7 +116,7 @@ L["Allows you to change the default font settings for the chat frames.\n\n|cffff
 L["Allows you to check the status of the A Test of Valor quest given by Wrathion for the legendary gems by using the |cff00ff96/tov|r chat command."] = true
 L["Allows you to color the pet battle info messages, and determine which chat frame to send them to.\n\nI am aware that some of the features of this module don't really pertain to the chat, but I couldn't really justify an entirely new addon.  So I just snuck them into here."] = true
 L["Allows you to reroute auction house messages to a different chat frame."] = true
-L["Allows you to use some fun filters on various chat channels.\n\n|cffff0000This will break any links in the chat message.|r\n\n|cffffff00Filters:|r\n13375p34|<, ALL UPPERCASE, all lowercase, Capitalize Words, AlTeRnAtInG CaPs, BeTTeR ALTeRNaTiNG CaPS, sretteL esreveR, Gràvè Lèttèrs, Ácúté Léttérs, Ðïärësïs Lëttërs, Cîrcûmflêx Lêttêrs"] = true
+L["Allows you to use some fun filters on various chat channels.\n\n|cffff0000This will break any links in the chat message.|r\n\n|cffffff00Filters:|r\n13375p34|<, ALL UPPERCASE, all lowercase, Capitalize Words, AlTeRnAtInG CaPs, BeTTeR ALTeRNaTiNG CaPS, sretteL esreveR, Grï¿½vï¿½ Lï¿½ttï¿½rs, ï¿½cï¿½tï¿½ Lï¿½ttï¿½rs, ï¿½ï¿½ï¿½rï¿½sï¿½s Lï¿½ttï¿½rs, Cï¿½rcï¿½mflï¿½x Lï¿½ttï¿½rs"] = true
 L["Alt + Left Click"] = true
 L["Alt + Right Click"] = true
 L["Alt Names"] = true
@@ -464,7 +462,6 @@ L["Fun Filters"] = true
 L["GInvite Alternate Command"] = true
 L["GKick Command"] = true
 L["GKick Target: |cffffff00%s|r"] = true
-L["GR_description"] = true
 L["Gamemenu Button"] = true
 L["General Tab Channels"] = true
 L["General"] = true
@@ -757,7 +754,7 @@ L["Provides basic chat subtitutions."] = true
 L["Provides keybinds to make talking in a specific chat easier."] = true
 L["Provides options to color player names, add player levels, and add tab completion of player names."] = true
 L["Provides |cff00ff00/ginv|r, an alternative to |cff00ff00/ginvite|r command, for us lazy folks."] = true
-L["Provides |cff00ff00/minv|r to invite multiple people at once. Also adds custom abbreviations for characters which are invited often.\n\nModule Written by Björn Benjamin Hiller <bjoern.hiller@gmail.com>"] = true
+L["Provides |cff00ff00/minv|r to invite multiple people at once. Also adds custom abbreviations for characters which are invited often.\n\nModule Written by Bjï¿½rn Benjamin Hiller <bjoern.hiller@gmail.com>"] = true
 L["Put each emote on a separate line.\nSeparate the command from the text with a colon (\":\")."] = true
 L["Quality Notification"] = true
 L["Quality"] = true
@@ -853,6 +850,7 @@ L["Send a chat message when a role is set/changed."] = true
 L["Send a notice when something is added to the log."] = true
 L["Send a tell to your target."] = true
 L["Send a whisper to the person who left."] = true
+L["Send guild recruitment messages to various chat channels."] = true
 L["Send messages to guild chat when someone leaves."] = true
 L["Separator"] = true
 L["Set DND message"] = true
