@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Addon Messages", "AceConsole-3.0", "AceEvent-3.0")

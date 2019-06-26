@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Channel Sounds", "AceEvent-3.0", "AceConsole-3.0")
@@ -7,6 +7,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 local LSM = LibStub("LibSharedMedia-3.0")
 Module.name = L["Channel Sounds"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local PlaySoundFile = _G["PlaySoundFile"]
 
 local format = string.format
 local upper = string.upper

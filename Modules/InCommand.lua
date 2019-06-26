@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("In Command", "AceConsole-3.0", "AceTimer-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["In Command"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local CreateFrame = _G["CreateFrame"]
+local ClearFocus = _G["ClearFocus"]
+local IsSecureCmd = _G["IsSecureCmd"]
 
 local format = string.format
 

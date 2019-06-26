@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("GKick Command", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["GKick Command"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local CanGuildRemove = _G["CanGuildRemove"]
+local UnitIsInMyGuild = _G["UnitIsInMyGuild"]
+local GuildUninvite = _G["GuildUninvite"]
 
 function Module:OnEnable()
 	if CanGuildRemove() then

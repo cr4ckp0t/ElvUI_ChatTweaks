@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Custom Emotes", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Custom Emotes"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local RegisterEmotes = _G["RegisterEmotes"]
+local UnregisterEmotes = _G["UnregisterEmotes"]
+local UnitName = _G["UnitName"]
 
 local format = string.format
 

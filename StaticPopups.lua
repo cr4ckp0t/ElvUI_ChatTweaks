@@ -1,8 +1,10 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
+
+local ReloadUI = _G["ReloadUI"]
 
 -- ElvUI_ChatTweaks.lua
 StaticPopupDialogs["ECT_RLUI"] = {

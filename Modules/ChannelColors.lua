@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -- Module Created By Klix (EU, Twisting Nether)
 -------------------------------------------------------------------------------
@@ -7,6 +7,11 @@ local Module = ElvUI_ChatTweaks:NewModule("Channel Colors", "AceEvent-3.0", "Ace
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Channel Colors"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetMessageTypeColor = _G["GetMessageTypeColor"]
+local ChangeChatColor = _G["ChangeChatColor"]
+local GetChannelName = _G["GetChannelName"]
+local GetChannelList = _G["GetChannelList"]
 
 local db, options
 local defaults = {

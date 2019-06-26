@@ -1,11 +1,20 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Invite Links", "AceEvent-3.0", "AceHook-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Invite Links"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local CanGuildInvite = _G["CanGuildInvite"]
+local SetItemRef = _G["SetItemRef"]
+local IsAltKeyDown = _G["IsAltKeyDown"]
+local IsControlKeyDown = _G["IsControlKeyDown"]
+local InviteUnit = _G["InviteUnit"]
+local UnitIsInMyGuild = _G["UnitIsInMyGuild"]
+local GetGuildInfo = _G["GetGuildInfo"]
+local GuildInvite = _G["GuildInvite"]
 
 local gsub = string.gsub
 local format = string.format

@@ -1,11 +1,27 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Calculator", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Calculator"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local IsAddOnLoaded = _G["IsAddOnLoaded"]
+local RequestPVPRewards = _G["RequestPVPRewards"]
+local GetCurrencyInfo = _G["GetCurrencyInfo"]
+local GetPVPRewards = _G["GetPVPRewards"]
+local GetHonor = _G["GetHonor"]
+local GetConquest = _G["GetConquest"]
+local GetJustice = _G["GetJustice"]
+local GetValor = _G["GetValor"]
+local GetValorCap = _G["GetValorCap"]
+local GetJusticeCap = _G["GetJusticeCap"]
+local GetConquestCap = _G["GetConquestCap"]
+local GetTotalAchievementPoints = _G["GetTotalAchievementPoints"]
+local UnitHealthMax = _G["UnitHealthMax"]
+local UnitPowerMax = _G["UnitPowerMax"]
+local GetMoney = _G["GetMoney"]
 
 -- this addon wont run with SimpleCalc
 if IsAddOnLoaded("SimpleCalc") then return end

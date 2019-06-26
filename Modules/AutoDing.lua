@@ -1,11 +1,17 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Auto Ding", "AceEvent-3.0", "AceTimer-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Auto Ding"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitIsAFK = _G["UnitIsAFK"]
+local UnitIsDND = _G["UnitIsDND"]
+local UnitName = _G["UnitName"]
+local UnitInRaid = _G["UnitInRaid"]
+local UnitInParty = _G["UnitInParty"]
 
 local db, options
 local defaults = {

@@ -1,13 +1,14 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 -- Module Written by Björn Benjamin Hiller <bjoern.hiller@gmail.com>
 local Module = ElvUI_ChatTweaks:NewModule("Multiple Invite Command", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Multiple Invite Command"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local InviteUnit = _G["InviteUnit"]
 
 local abbrev = {}
 local db, options

@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("A Test of Valor", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["A Test of Valor"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetAchievementInfo = _G["GetAchievementInfo"]
+local GetAchievementLink = _G["GetAchievementLink"]
+local GetAchievementCriteriaInfo = _G["GetAchievementCriteriaInfo"]
 
 local db, options
 local defaults = {

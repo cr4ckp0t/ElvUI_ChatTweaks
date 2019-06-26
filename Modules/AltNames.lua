@@ -1,8 +1,7 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 -- This module is only a slightly modified AltNames module from Chatter.
 -- Only modified enough to work for with the different setup of this script.
 local Module = ElvUI_ChatTweaks:NewModule("Alt Names", "AceHook-3.0", "AceEvent-3.0", "AceConsole-3.0")
@@ -10,6 +9,17 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 local LA
 Module.name = L["Alt Names"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local setmetatable = _G["setmetatable"]
+local unpack = _G["unpack"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
+local UnitPopup_ShowMenu = _G["UnitPopup_ShowMenu"]
+local IsInGuild = _G["IsInGuild"]
+local GetGuildInfo = _G["GetGuildInfo"]
+local GetNumGuildMembers = _G["GetNumGuildMembers"]
+local GetGuildRosterInfo = _G["GetGuildRosterInfo"]
+local GetUnit = _G["GetUnit"]
+local UnitIsPlayer = _G["UnitIsPlayer"]
 
 local NAMES, GUILDNOTES
 local pairs = _G.pairs

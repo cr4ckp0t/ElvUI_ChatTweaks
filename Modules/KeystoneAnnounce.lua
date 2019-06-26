@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
@@ -7,6 +7,23 @@ local Module = ElvUI_ChatTweaks:NewModule("Keystone Announce", "AceConsole-3.0",
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Keystone Announce"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local C_Club_GetGuildClubId = C_Club.GetGuildClubId
+local C_Club_GetSubscribedClubs = C_Club.GetSubscribedClubs
+local C_Club_GetStreams = C_Club.GetStreams
+local C_Club_FocusStream = C_Club.FocusStream
+local UnitFullName = _G["UnitFullName"]
+local GetContainerNumSlots = _G["GetContainerNumSlots"]
+local GetContainerItemID = _G["GetContainerItemID"]
+local GetContainerItemLink = _G["GetContainerItemLink"]
+local C_Club_SendMessage = C_Club.SendMessage
+local IsInGroup = _G["IsInGroup"]
+local UIDropDownMenu_Initialize = _G["UIDropDownMenu_Initialize"]
+local UIDropDownMenu_CreateInfo = _G["UIDropDownMenu_CreateInfo"]
+local UIDropDownMenu_AddButton = _G["UIDropDownMenu_AddButton"]
+local UIDropDownMenu_SetSelectedName = _G["UIDropDownMenu_SetSelectedName"]
+local UIDropDownMenu_SetText = _G["UIDropDownMenu_SetText"]
+local CloseDropDownMenus = _G["CloseDropDownMenus"]
 
 local KeystoneID = 158923 -- m+ keystone id
 local keystone = nil
@@ -57,8 +74,8 @@ function Module:OnDisable()
 end
 
 local function getClubs()
-	local GuildClubID = C_Club.GetGuildClubId()
-	table1 = C_Club.GetSubscribedClubs(); 
+	local GuildClubID = C_Club_GetGuildClubId()
+	table1 = C_Club_GetSubscribedClubs(); 
 	for in1, da1 in ipairs(table1) do 
 		for key, value in pairs(da1) do 		
 			if key == "name" then
@@ -69,7 +86,7 @@ local function getClubs()
 			end			
 		end
 		
-		local TEMPTABLE = C_Club.GetStreams(TempID)
+		local TEMPTABLE = C_Club_GetStreams(TempID)
 		
 		for in2, da2 in ipairs(TEMPTABLE) do
 			for key, value in pairs(da2) do 			
@@ -102,11 +119,11 @@ local function SetFocus(ClubStreamID)
 			for comIndex, comData in ipairs(communitys) do 
 				First, Second = comData:match("([^,]+)|([^,]+)")
 				clubID, StreamID = Second:match("([^,]+):([^,]+)")	
-				t1 = C_Club.FocusStream(clubID, StreamID)
+				t1 = C_Club_FocusStream(clubID, StreamID)
 			end
 		else
 			First, Second = ClubStreamID:match("([^,]+):([^,]+)")	
-			t1 = C_Club.FocusStream(First, Second)
+			t1 = C_Club_FocusStream(First, Second)
 		end
 	end
 end
@@ -122,7 +139,7 @@ local function keypost(force, guild, community, streamid)
 				if force or (keystone and keystone ~= link) then
                     local message = string.format("%s-%s: %s", fullName, realm, link)	
 					if (community ~= nil) and (streamid ~= nil) then	
-						C_Club.SendMessage(community, streamid, message);
+						C_Club_SendMessage(community, streamid, message);
 						return
 					end						
 					if guild then
@@ -209,7 +226,7 @@ end
 
 function Module:CLUB_MESSAGE_ADDED()
 	local clubId, streamId, messageId
-	local GuildClubID = C_Club.GetGuildClubId()
+	local GuildClubID = C_Club_GetGuildClubId()
 	local Time = GetTime()
 	local NewTime = Time+tonumber(db.SpamCdTime)
 	local Info = C_Club.GetMessageInfo(clubId, streamId, messageId)

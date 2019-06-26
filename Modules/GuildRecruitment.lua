@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
@@ -9,6 +9,14 @@ local LibC = LibStub:GetLibrary("LibCompress")
 local LibCE = LibC:GetAddonEncodeTable()
 Module.name = L["Guild Recruitment"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetServerTime = _G["GetServerTime"]
+local C_Calendar_GetDate = C_Calendar.GetDate
+local GetGameTime = _G["GetGameTime"]
+local IsInGuild = _G["IsInGuild"]
+local GetGuildInfo = _G["GetGuildInfo"]
+local UnitIsDND = _G["UnitIsDND"]
+local UnitName = _G["UnitName"]
 
 --
 -- Library functions
@@ -33,7 +41,7 @@ end
 
 -- get server time in unix timestamp format
 local function GetServerTime()
-	local cdate = C_Calendar.GetDate()
+	local cdate = C_Calendar_GetDate()
 	local weekday, month, day, year = cdate.weekday, cdate.month, cdate.monthDay, cdate.year
 	local hours, minutes = GetGameTime()
 	
@@ -281,7 +289,7 @@ function Module:GetOptions()
 end
 
 function Module:Info()
-	return L["GR_description"]
+	return L["Send guild recruitment messages to various chat channels."]
 end
 
 --

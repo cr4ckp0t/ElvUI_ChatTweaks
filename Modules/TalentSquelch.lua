@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
@@ -7,6 +7,10 @@ local Module = ElvUI_ChatTweaks:NewModule("Talent Squelch", "AceEvent-3.0", "Ace
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Talent Squelch"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local C_Timer_After = C_Timer.After
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 
 local db, options
 local defaults = {
@@ -50,7 +54,7 @@ function Module:AddSquelch()
 end
 
 function Module:RemoveSquelchDelayed()
-    C_Timer.After(1, function() self:RemoveSquelch() end)
+    C_Timer_After(1, function() self:RemoveSquelch() end)
 end
 
 function Module:RemoveSquelch()

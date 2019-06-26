@@ -1,11 +1,13 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Automatic Chat Logging", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Automatic Chat Logging"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local LoggingChat = _G["LoggingChat"]
 
 function Module:OnEnable()
 	self.isLogging = LoggingChat()

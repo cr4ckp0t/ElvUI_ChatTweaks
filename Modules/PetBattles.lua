@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Pet Battles", "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0", "AceTimer-3.0")
@@ -7,6 +7,27 @@ local LibPetJournal = LibStub("LibPetJournal-2.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Pet Battles"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetNumTrackingTypes = _G["GetNumTrackingTypes"]
+local GetTrackingInfo = _G["GetTrackingInfo"]
+local C_PetJournal_GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
+local C_PetJournal_GetPetStats = C_PetJournal.GetPetStats
+local GetItemQualityColor = _G["GetItemQualityColor"]
+local UnitIsWildBattlePet = _G["UnitIsWildBattlePet"]
+local GetUnit = _G["GetUnit"]
+local C_PetBattles_GetBreedQuality = C_PetBattles.GetBreedQuality
+local C_PetBattles_GetName = C_PetBattles.GetName
+local C_PetBattles_IsWildBattle = C_PetBattles.IsWildBattle
+local C_PetBattles_GetPetSpeciesID = C_PetBattles.GetPetSpeciesID
+local C_PetBattles_GetNumPets = C_PetBattles.GetNumPets
+local C_PetBattles_GetLevel = C_PetBattles.GetLevel
+local C_PetBattles_GetMaxHealth = C_PetBattles.GetMaxHealth
+local C_PetBattles_GetPower = C_PetBattles.GetPower
+local C_PetBattles_GetSpeed = C_PetBattles.GetSpeed
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local SetTracking = _G["SetTracking"]
+local IsAddOnLoaded = _G["IsAddOnLoaded"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 
 local insert = table.insert
 local concat = table.concat
@@ -93,9 +114,9 @@ end
 local function GetPetQualities(name)
 	local pets, petString = {}, "|c%s%s|r |cffffffff(%d)|r"
 	for i, id in LibPetJournal:IteratePetIDs() do
-		local _, _, level, _, _, _, petName, _, _, _, _, _, _, _, _, _ = C_PetJournal.GetPetInfoByPetID(id)
+		local _, _, level, _, _, _, petName, _, _, _, _, _, _, _, _, _ = C_PetJournal_GetPetInfoByPetID(id)
 		if petName == name then
-			local _, _, _, _, quality = C_PetJournal.GetPetStats(id)
+			local _, _, _, _, quality = C_PetJournal_GetPetStats(id)
 			local _, _, _, hex = GetItemQualityColor(quality - 1)
  			insert(pets, petString:format(hex, _G[("ITEM_QUALITY%d_DESC"):format(quality - 1)], level))
 		end
@@ -110,9 +131,9 @@ end
 local function GetHighestQuality(species)
 	local highest
 	for i, id in LibPetJournal:IteratePetIDs() do
-		local speciesID, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = C_PetJournal.GetPetInfoByPetID(id)
+		local speciesID, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = C_PetJournal_GetPetInfoByPetID(id)
 		if speciesID == species then
-			local _, _, _, _, quality = C_PetJournal.GetPetStats(id)
+			local _, _, _, _, quality = C_PetJournal_GetPetStats(id)
 			if not highest or highest < quality then
 				highest = quality
 			end
@@ -143,17 +164,17 @@ end
 
 function Module:ColorNames(frame)
 	if not db.colorNames or not frame.petOwner or not frame.petIndex or not frame.Name then return end
-	local quality = C_PetBattles.GetBreedQuality(frame.petOwner, frame.petIndex) - 1
+	local quality = C_PetBattles_GetBreedQuality(frame.petOwner, frame.petIndex) - 1
 	local _, _, _, hex = GetItemQualityColor(quality)
-	local petName = C_PetBattles.GetName(frame.petOwner, frame.petIndex)
+	local petName = C_PetBattles_GetName(frame.petOwner, frame.petIndex)
 	if frame.petOwner == 1 and petName then
 		frame.Name:SetText(("|c%s%s|r"):format(hex, petName))
 	elseif frame.petOwner == 2 and petName then
-		if C_PetBattles.IsWildBattle(frame.petOwner, frame.PetIndex) then
+		if C_PetBattles_IsWildBattle(frame.petOwner, frame.PetIndex) then
 			local petString = "|c%s%s|r (|c%s%s|r)"
 			-- this only applies to wild pet battles, pvp ones are ignored
 			if (quality + 1) ~= 5 and (quality + 1) ~= 6 then
-				local species = C_PetBattles.GetPetSpeciesID(frame.petOwner, frame.petIndex)
+				local species = C_PetBattles_GetPetSpeciesID(frame.petOwner, frame.petIndex)
 				local highest = GetHighestQuality(species)
 				if not highest then
 					frame.Name:SetText(petString:format(hex, petName, "ffccff00", L["Not Owned"]))
@@ -173,18 +194,18 @@ end
 function Module:PET_BATTLE_OPENING_DONE()
 	local chatFrame = _G[db.quality.frame]
 	-- this only applies to wild pet battles
-	if db.quality.enable and C_PetBattles.IsWildBattle(2, i) then
+	if db.quality.enable and C_PetBattles_IsWildBattle(2, i) then
 		local lineString = "|cffffff00Pet #%d:|r %s|Hbattlepet:%s:%s:%s:%s:%s:%s:|h[%s]|h|r |cffffffff(%d), %s:|r %s"
 		local notCapturable = "|cffffff00Pet #%d:|r %s|Hbattlepet:%s:%s:%s:%s:%s:%s:|h[%s]|h|r |cffffffff(%d), |cffff5a00%s|r"
 		chatFrame:AddMessage(L["|cFF5cb4f8Pet Battle - Tale of the Tape|r"])
-		for i = 1, C_PetBattles.GetNumPets(2) do
+		for i = 1, C_PetBattles_GetNumPets(2) do
 			-- get pet info for the link
-			local quality = C_PetBattles.GetBreedQuality(2, i)
-			local species = C_PetBattles.GetPetSpeciesID(2, i)
-			local level = C_PetBattles.GetLevel(2, i)
-			local health = C_PetBattles.GetMaxHealth(2, i)
-			local power = C_PetBattles.GetPower(2, i)
-			local speed = C_PetBattles.GetSpeed(2, i)
+			local quality = C_PetBattles_GetBreedQuality(2, i)
+			local species = C_PetBattles_GetPetSpeciesID(2, i)
+			local level = C_PetBattles_GetLevel(2, i)
+			local health = C_PetBattles_GetMaxHealth(2, i)
+			local power = C_PetBattles_GetPower(2, i)
+			local speed = C_PetBattles_GetSpeed(2, i)
 			
 			if quality ~= 5 and quality ~= 6 then
 				local highest = GetHighestQuality(species)
@@ -199,10 +220,10 @@ function Module:PET_BATTLE_OPENING_DONE()
 						extra = extra .. L[" |cFFff5a00(Upgrade)|r"]
 					end
 				end
-				chatFrame:AddMessage(lineString:format(i, ITEM_QUALITY_COLORS[quality - 1].hex, species, level, quality, health, power, speed, C_PetBattles.GetName(2, i), level, L["Yours"], extra))
+				chatFrame:AddMessage(lineString:format(i, ITEM_QUALITY_COLORS[quality - 1].hex, species, level, quality, health, power, speed, C_PetBattles_GetName(2, i), level, L["Yours"], extra))
 			else
 				-- epic and legendary pets can't be captured
-				chatFrame:AddMessage(notCapturable:format(i, ITEM_QUALITY_COLORS[quality - 1].hex, species, level, quality, health, power, speed, C_PetBattles.GetName(2, i), level, L["Not Capturable"]))
+				chatFrame:AddMessage(notCapturable:format(i, ITEM_QUALITY_COLORS[quality - 1].hex, species, level, quality, health, power, speed, C_PetBattles_GetName(2, i), level, L["Not Capturable"]))
 			end
 		end
 	end

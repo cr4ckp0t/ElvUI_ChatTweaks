@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 --------------------------------------------------------------------------------
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "ptBR", false)

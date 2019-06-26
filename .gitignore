@@ -1,2 +1,11 @@
 /.vscode
-/Libraries
+/Libraries/Ace3
+/Libraries/CallbackHandler-1.0
+/Libraries/LibAlts-1.0
+/Libraries/LibCompress
+/Libraries/LibDataBroker-1.1
+/Libraries/LibDBIcon-1.0
+/Libraries/LibPetJournal-2.0
+/Libraries/LibSharedMedia-3.0
+/Libraries/LibSink-2.0
+/Libraries/LibStub

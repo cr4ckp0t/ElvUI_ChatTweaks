@@ -1,13 +1,16 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
-
 --[[ Module based on SpamageMeters by Wrug and Cybey ]]--
 local Module = ElvUI_ChatTweaks:NewModule("Damage Meters", "AceEvent-3.0", "AceHook-3.0", "AceTimer-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Damage Meters"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
+local ShowUIPanel = _G["ShowUIPanel"]
 
 local upper = string.upper
 local format = string.format
@@ -30,7 +33,8 @@ local firstLines = {
 	"^Skada报告(.*)的(.*), (.*)到(.*):$",							-- Skada zhCN, might change in new Skada version
 	"^(.*)的報告來自(.*)，從(.*)到(.*)：$",								-- Skada zhTW, might change in new Skada version
 	"^Skada: (.*) for (.*), (.*) - (.*):$",					-- Better Skada support player details
-	"^(.*) Done for (.*)$"									-- TinyDPS
+	"^(.*) Done for (.*)$",									-- TinyDPS
+	"^Details(.*)$",										-- Details!
 }
 local nextLines = {
 	"^(%d+). (.*)$",										-- Recount and Skada

@@ -1,11 +1,16 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Keybinds", "AceEvent-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Keybinds"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetBindingKey = _G["GetBindingKey"]
+local SetBinding = _G["SetBinding"]
+local SaveBindings = _G["SaveBindings"]
+local GetCurrentBindingSet = _G["GetCurrentBindingSet"]
 
 local options
 

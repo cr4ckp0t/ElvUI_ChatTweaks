@@ -1,11 +1,15 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Datatext", "AceConsole-3.0", "AceTimer-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Datatext"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local IsShiftKeyDown = _G["IsShiftKeyDown"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
 
 local E, _, V, P, G, _ = unpack(ElvUI)
 local DT = E:GetModule("DataTexts")
@@ -113,7 +117,7 @@ local function OnEnter(self)
 	
 	-- build the tooltip
 	DT.tooltip:ClearLines()
-	DT.tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Lockslap|r"]):format(ElvUI_ChatTweaks.hexColor))
+	DT.tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Crackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
 	DT.tooltip:AddLine(" ")
 	
 	-- module info

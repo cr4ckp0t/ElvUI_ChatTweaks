@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
 -- Module Created By Klix (EU, Twisting Nether)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
@@ -7,6 +7,26 @@ local Module = ElvUI_ChatTweaks:NewModule("Who Taunted", "AceConsole-3.0", "AceE
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Who Taunted"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitName = _G["UnitName"]
+local CombatLogGetCurrentEventInfo = _G["CombatLogGetCurrentEventInfo"]
+local GetServerTime = _G["GetServerTime"]
+local C_Map_GetBestMapForUnit = C_Map.GetBestMapForUnit
+local UnitIsPlayer = _G["UnitIsPlayer"]
+local UnitInParty = _G["UnitInParty"]
+local UnitInRaid = _G["UnitInRaid"]
+local GetSpellLink = _G["GetSpellLink"]
+local GetSpellInfo = _G["GetSpellInfo"]
+local GetClassColor = _G["GetClassColor"]
+local IsInRaid = _G["IsInRaid"]
+local GetNumGroupMembers = _G["GetNumGroupMembers"]
+local UnitIsGroupLeader = _G["UnitIsGroupLeader"]
+local UnitIsGroupAssistant = _G["UnitIsGroupAssistant"]
+local GetNumSubgroupMembers = _G["GetNumSubgroupMembers"]
+local GetChannelName = _G["GetChannelName"]
+local GetChatWindowChannels = _G["GetChatWindowChannels"]
+local GetChatWindowInfo = _G["GetChatWindowInfo"]
+local UnitClass = _G["UnitClass"]
 
 local PlayerName, PlayerRealm = UnitName("player");
 local BgDisable = false;
@@ -132,7 +152,7 @@ function Module:RegenEnabledOnEvent(event, ...)
 end
 
 function Module:ZoneChangedOnEvent(event, ...)
-	local mapID = C_Map.GetBestMapForUnit("player");
+	local mapID = C_Map_GetBestMapForUnit("player");
 	if (Module:IsPvPZone(mapID) == true) and (db.DisableInPvPZone == true) then
 		DisableInPvPZone = true;
 	else

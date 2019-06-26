@@ -1,11 +1,16 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Group Say Command", "AceHook-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Group Say Command"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local GetNumSubgroupMembers = _G["GetNumSubgroupMembers"]
+local IsInRaid = _G["IsInRaid"]
+local GetNumGroupMembers = _G["GetNumGroupMembers"]
+local IsLFGModeActive = _G["IsLFGModeActive"]
 
 -- module vars
 local _G	 = getfenv(0)

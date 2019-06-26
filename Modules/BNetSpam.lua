@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- Based on BadBoy by funkydude
@@ -7,6 +7,10 @@ local Module = ElvUI_ChatTweaks:NewModule("Battle.net Spam", "AceConsole-3.0", "
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Battle.net Spam"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local BNGetNumFriendInvites = _G["BNGetNumFriendInvites"]
+local BNGetFriendInviteInfo = _G["BNGetFriendInviteInfo"]
+local BNReportFriendInvite = _G["BNReportFriendInvite"]
 
 local db, options
 local defaults = {

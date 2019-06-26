@@ -1,11 +1,14 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Tell Target", "AceHook-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Tell Target"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitIsPlayer = _G["UnitIsPlayer"]
+local UnitName = _G["UnitName"]
 
 local _G = getfenv(0)
 local editBoxString = "ChatFrame%dEditBox"
@@ -19,7 +22,7 @@ function Module:SendTellToTarget(frame, text, editBox)
 		if name then
 			-- for cross realm compatibility
 			if realm then
-				fullname = name .. "-" .. realm	-- i.e: Lockslap-Bleeding Hollow
+				fullname = name .. "-" .. realm	-- i.e: Crackpotx-Bleeding Hollow
 			else
 				fullname = name
 			end

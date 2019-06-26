@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local E, _, V, P, G = unpack(ElvUI)
@@ -8,6 +8,13 @@ local Module = ElvUI_ChatTweaks:NewModule("Minimap Button", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Minimap Button"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local unpack = _G["unpack"]
+local IsShiftKeyDown = _G["IsShiftKeyDown"]
+local StaticPopup_Show = _G["StaticPopup_Show"]
+local IsControlKeyDown = _G["IsControlKeyDown"]
+local IsAltKeyDown = _G["IsAltKeyDown"]
+local ReloadUI = _G["ReloadUI"]
 
 local db
 local defaults = {
@@ -27,7 +34,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_ENABLE_ALL")
 			elseif IsControlKeyDown() then
-				E:ToggleConfig()
+				E:ToggleOptionsUI()
 			elseif IsAltKeyDown() then
 				ReloadUI()
 			else
@@ -37,7 +44,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_DISABLE_ALL")
 			elseif IsControlKeyDown() then
-				E:ToggleConfigMode()
+				E:ToggleMoveMode()
 			elseif IsAltKeyDown() then
 				AB:ActivateBindMode()
 			else
@@ -49,7 +56,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 		local active, inactive, total = ElvUI_ChatTweaks:GetModuleStatus()
 		-- build the tooltip
 		tooltip:ClearLines()
-		tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Lockslap|r"]):format(ElvUI_ChatTweaks.hexColor))
+		tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Crackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
 		tooltip:AddLine(" ")
 		
 		-- module info

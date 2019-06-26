@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Lockslap (US, Bleeding Hollow)
+-- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- Based on BadBoy_Levels by funkydude
@@ -7,6 +7,24 @@ local Module = ElvUI_ChatTweaks:NewModule("Whisper Filter", "AceConsole-3.0", "A
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Whisper Filter"]
 Module.namespace = string.gsub(Module.name, " ", "")
+
+local UnitIsInMyGuild = _G["UnitIsInMyGuild"]
+local BNGetNumFriends = _G["BNGetNumFriends"]
+local BNGetNumFriendToons = _G["BNGetNumFriendToons"]
+local BNGetFriendToonInfo = _G["BNGetFriendToonInfo"]
+local GetRealmName = _G["GetRealmName"]
+local GetPlayerInfoByGUID = _G["GetPlayerInfoByGUID"]
+local IsAddOnLoaded = _G["IsAddOnLoaded"]
+local AddFriend = _G["AddFriend"]
+local ShowFriends = _G["ShowFriends"]
+local UnitName = _G["UnitName"]
+local GetNumFriends = _G["GetNumFriends"]
+local GetFriendInfo = _G["GetFriendInfo"]
+local RemoveFriend = _G["RemoveFriend"]
+local unpack = _G["unpack"]
+local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
+local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
+local GetMaxPlayerLevel = _G["GetMaxPlayerLevel"]
 
 local good, maybe, filterTable = {}, {}, {}
 local login = true	-- to only run friends list update on login
@@ -114,7 +132,7 @@ function Module:FRIENDLIST_UPDATE(self, event, ...)
 				RemoveFriend(player, true)
 				if type(level) ~= "number" then
 					-- something happened
-					self:Print(format(L["Level wasn't a number, tell Lockslap. Level was |cffff0000%s|r!"], level))
+					self:Print(format(L["Level wasn't a number, tell Crackpotx. Level was |cffff0000%s|r!"], level))
 					return
 				end
 				
