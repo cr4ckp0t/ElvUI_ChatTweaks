@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Item Level Link", "AceConsole-3.0", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Item Level Link"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Item Level Link"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local CreateFrame = _G["CreateFrame"]

@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Easy Channel", "AceConsole-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Easy Channel"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Easy Channel"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local IsInGroup = _G["IsInGroup"]

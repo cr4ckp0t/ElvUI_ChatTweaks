@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Who Taunted", "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Who Taunted"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Who Taunted"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local UnitName = _G["UnitName"]

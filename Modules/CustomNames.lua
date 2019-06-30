@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Custom Names", "AceConsole-3.0", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Custom Names"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Custom Names"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local UnitName = _G["UnitName"]

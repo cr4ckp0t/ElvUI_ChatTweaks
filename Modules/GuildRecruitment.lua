@@ -7,7 +7,7 @@ local Module = ElvUI_ChatTweaks:NewModule("Guild Recruitment", "AceConsole-3.0",
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 local LibC = LibStub:GetLibrary("LibCompress")
 local LibCE = LibC:GetAddonEncodeTable()
-Module.name = L["Guild Recruitment"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Guild Recruitment"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local GetServerTime = _G["GetServerTime"]

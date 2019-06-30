@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Token Price", "AceConsole-3.0", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Token Price"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Token Price"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local C_WowTokenPublic_UpdateMarketPrice = C_WowTokenPublic.UpdateMarketPrice

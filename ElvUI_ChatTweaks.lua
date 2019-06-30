@@ -277,6 +277,8 @@ function ElvUI_ChatTweaks:PrintHelp()
 			print(format(clrStr, "/tp", "/token", L["Show current token price."]))
 		elseif module:IsEnabled() and name == "Who Whispered Me" then
 			print(format(cmdStr, "/ws", L["Show how many whispers, you've received this session."]))
+		elseif module:IsEnabled() and name == "Rare Announce" then
+			print(format(cmdStr, "/rare", L["Announce your target (a rare mob)."]))
 		end
 	end
 end

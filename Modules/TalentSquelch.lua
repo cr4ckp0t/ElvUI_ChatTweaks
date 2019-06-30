@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Talent Squelch", "AceEvent-3.0", "AceConsole-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
-Module.name = L["Talent Squelch"]..ElvUI_ChatTweaks.NewSign
+Module.name = L["Talent Squelch"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
 local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
