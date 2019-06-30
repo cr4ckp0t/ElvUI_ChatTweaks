@@ -287,19 +287,19 @@ Module.patterns = {
 	-- players mana
 	["%%pm%%"] = {
 		name = L["Player's Mana"],
-		func = function() return UnitPower("player", 0) end,
+		func = function() return UnitPower("player") end,
 	},
 	["%%pmm%%"] = {
 		name = L["Player's Max Mana"],
-		func = function() return UnitPowerMax("player", 0) end,
+		func = function() return UnitPowerMax("player") end,
 	},
 	["%%pmp%%"] = {
 		name = L["Player's Mana Percent"],
-		func = function() return math.floor(UnitPower("player", 0) / UnitPowerMax("player", 0) * 100) end,
+		func = function() return math.floor(UnitPower("player") / UnitPowerMax("player") * 100) end,
 	},
 	["%%pmd%%"] = {
 		name = L["Player's Mana Deficit"],
-		func = function() return UnitPowerMax("player", 0) - UnitPower("player", 0) end,
+		func = function() return UnitPowerMax("player") - UnitPower("player") end,
 	},
 	
 	-- location information
@@ -312,6 +312,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local x, y = E.MapInfo.x, E.MapInfo.y
+				if (x == nil or y == nil) then
+					return L["<no location>"]
+				end
 				return ("%d, %d"):format(math.floor((x * 100) + 0.5), math.floor((y * 100) + 0.5))
 			end
 		end,
@@ -321,6 +324,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local x, _ = E.MapInfo.x, _
+				if (x == nil) then
+					return L["<no location>"]
+				end
 				return math.floor((x * 100) + 0.5)
 			end
 		end,
@@ -330,6 +336,9 @@ Module.patterns = {
 		func = function()
 			if E.MapInfo then
 				local _, y = _, E.MapInfo.y
+				if (y == nil) then
+					return L["<no location>"]
+				end
 				return math.floor((y * 100) + 0.5)
 			end
 		end,
@@ -387,19 +396,19 @@ Module.patterns = {
 	-- target mana
 	["%%tm%%"] = {
 		name = L["Target's Mana"],
-		func = function() return UnitExists("target") and UnitMana("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPower("target") or L["<notarget>"] end,
 	},
 	["%%tmm%%"] = {
 		name = L["Target's Max Mana"],
-		func = function() return UnitExists("target") and UnitManaMax("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPowerMax("target") or L["<notarget>"] end,
 	},
 	["%%tmp%%"] = {
 		name = L["Target's Mana Percent"],
-		func = function() return UnitExists("target") and math.floor(UnitMana("target") / UnitManaMax("target") * 100) or L["<notarget>"] end,
+		func = function() return UnitExists("target") and math.floor(UnitPower("target") / UnitPowerMax("target") * 100) or L["<notarget>"] end,
 	},
 	["%%tmd%%"] = {
 		name = L["Target's Mana Deficit"],
-		func = function() return UnitExists("target") and UnitManaMax("target") - UnitMana("target") or L["<notarget>"] end,
+		func = function() return UnitExists("target") and UnitPowerMax("target") - UnitPower("target") or L["<notarget>"] end,
 	},
 	
 	-- date/time subs
