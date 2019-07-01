@@ -42,7 +42,6 @@
 	<Script file="Modules\MultipleInviteCommand.lua" />
 	<Script file="Modules\PlayerNames.lua" />
 	<Script file="Modules\PopupMessages.lua" />
-	<Script file="Modules\RareAnnounce.lua" />
 	<Script file="Modules\ReadyCheck.lua" />
 	<Script file="Modules\ReleaseCommand.lua" />
 	<Script file="Modules\RepeatCommand.lua" />

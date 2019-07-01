@@ -7,6 +7,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Rare Announce"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
 
+--[[
 -- local api cache
 local C_Map_GetBestMapForUnit = C_Map.GetBestMapForUnit
 local C_Map_GetPlayerMapPosition = C_Map.GetPlayerMapPosition
@@ -81,24 +82,34 @@ function Module:PLAYER_TARGET_CHANGED()
 			self.throttle = self:ScheduleTimer(function(self) self.msgSent = false end, 30)
 		end
 	end	
-end
+end]]
 
 function Module:GetOptions()
 	if not options then
 		options = {
-			autoAnnounce = {
+			getAddon = {
+				type = "input",
+				order = 17,
+				width = "full",
+				name = L["Get Anounce Rare on Curse/Twitch"],
+				desc = L["I have split this off into its own addon, so ElvUI and ElvUI Chat Tweaks are not required. Copy the link in the text box to get the new addon."],
+				get = function(info) return "https://www.curseforge.com/wow/addons/announce-rare" end,
+				set = function(info, value) end,
+			},
+			--[[autoAnnounce = {
 				type = "toggle",
 				order = 17,
 				name = L["Auto Announce"],
 				desc = L["When you target a rare in Mechagon or Nazjatar, and it is alive, it will announce to general. There is a built in throttle to only send a message every 30 seconds."],
 				get = function(info) return db.autoAnnounce end,
 				set = function(info, value) db.autoAnnounce = value end,
-			},
+			},]]
 		}
 	end
 	return options
 end
 
+--[[
 function Module:OnInitialize()
 	self.db = ElvUI_ChatTweaks.db:RegisterNamespace(Module.namespace, defaults)
 	db = self.db.global
@@ -133,6 +144,7 @@ function Module:OnDisable()
 	self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 	self:UnregisterChatCommand("rare")
 end
+]]
 
 function Module:Info()
 	return L["Target the rare and then type |cff00ff00/rare|r to announce it in general chat."]
