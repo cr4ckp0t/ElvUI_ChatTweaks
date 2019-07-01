@@ -600,6 +600,7 @@ ElvUI_ChatTweaks.defaults = {
 			["Materials Farming"] = false,
 			["Pet Battles"] = false,
 			["Popup Messages"] = false,
+			["Rare Announce"] = false,
 			["Reroute Auction Messages"] = false,
 			["Spam Log"] = false,
 			["Strip Links"] = false,
