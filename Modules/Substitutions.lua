@@ -61,7 +61,7 @@ function Module:AddMessage(frame, text, ...)
 			if value.func then
 				if db.highlight then
 					local result = value.func() or ""
-					text = text:gsub(index, ("|cff%s%s|r"):format(color, value.func() or ""))
+					text = text:gsub(index, ("|cff%s%s|r"):format(color, result))
 				else
 					text = text:gsub(index, value.func)
 				end
@@ -242,72 +242,72 @@ end
 
 Module.patterns = {
 	-- player information
-	["%%pn%%"] = {
+	["%$pn%$"] = {
 		name = L["Player's Name"],
 		func = function() return UnitName("player") or "" end,
 	},
-	["%%pc%%"] = {
+	["%$pc%$"] = {
 		name = L["Player's Class"],
 		func = function()
 			local class, _ = UnitClass("player")
 			return class
 		end,
 	},
-	["%%pg%%"] = {
+	["%$pg%$"] = {
 		name = L["Player's Gender"],
 		func = function() return UnitSex("player") == 2 and L["Male"] or L["Female"] end,
 	},
-	["%%pl%%"] = {
+	["%$pl%$"] = {
 		name = L["Players Level"],
 		func = function() return UnitLevel("player") end,
 	},
-	["%%pil%%"] = {
+	["%$pil%$"] = {
 		name = L["Player's Average iLvl"],
 		func = function() return math.floor(GetAverageItemLevel()) end,
 	},
 	
 	-- player's health
-	["%%ph%%"] = {
+	["%$ph%$"] = {
 		name = L["Player's Health"],
 		func = function() return UnitHealth("player") end,
 	},
-	["%%phm%%"] = {
+	["%$phm%$"] = {
 		name = L["Player's Max Health"],
 		func = function() return UnitHealthMax("player") end,
 	},
-	["%%php%%"] = {
+	["%$php%$"] = {
 		name = L["Player's Health Percent"],
 		func = function() return math.floor(UnitHealth("player") / UnitHealthMax("player") * 100) end,
 	},
-	["%%phd%%"] = {
+	["%$phd%$"] = {
 		name = L["Player's Health Deficit"],
 		func = function() return UnitHealthMax("player") - UnitHealth("player") end,
 	},
 	
 	-- players mana
-	["%%pm%%"] = {
+	["%$pm%$"] = {
 		name = L["Player's Mana"],
 		func = function() return UnitPower("player") end,
 	},
-	["%%pmm%%"] = {
+	["%$pmm%$"] = {
 		name = L["Player's Max Mana"],
 		func = function() return UnitPowerMax("player") end,
 	},
-	["%%pmp%%"] = {
+	["%$pmp%$"] = {
 		name = L["Player's Mana Percent"],
 		func = function() return math.floor(UnitPower("player") / UnitPowerMax("player") * 100) end,
 	},
-	["%%pmd%%"] = {
+	["%$pmd%$"] = {
 		name = L["Player's Mana Deficit"],
 		func = function() return UnitPowerMax("player") - UnitPower("player") end,
 	},
 	
 	-- location information
-	["%%zon%%"] = {
+	["%$zon%$"] = {
 		name = L["Player's Zone"],
 		func = function() return GetRealZoneText() end,
 	},
-	["%%pos%%"] = {
+	["%$pos%$"] = {
 		name = L["Player's Location"],
 		func = function()
 			if E.MapInfo then
@@ -319,7 +319,7 @@ Module.patterns = {
 			end
 		end,
 	},
-	["%%posx%%"] = {
+	["%$posx%$"] = {
 		name = L["Player's X-Coordinate"],
 		func = function()
 			if E.MapInfo then
@@ -331,7 +331,7 @@ Module.patterns = {
 			end
 		end,
 	},
-	["%%posy%%"] = {
+	["%$posy%$"] = {
 		name = L["Player's Y-Coordinate"],
 		func = function()
 			if E.MapInfo then
@@ -345,11 +345,11 @@ Module.patterns = {
 	},
 	
 	-- target information
-	["%%tn%%"] = {
+	["%$tn%$"] = {
 		name = L["Target's Name"],
 		func = function() return UnitExists("target") and UnitName("target") or L["<notarget>"] end,
 	},
-	["%%tc%%"] = {
+	["%$tc%$"] = {
 		name = L["Target's Class"],
 		func = function()
 			if not UnitExists("target") then
@@ -360,11 +360,11 @@ Module.patterns = {
 			end
 		end,
 	},
-	["%%tl%%"] = {
+	["%$tl%$"] = {
 		name = L["Target's Level"],
 		func = function() return UnitExists("target") and UnitLevel("target") or L["<notarget>"] end,
 	},
-	["%%tg%%"] = {
+	["%$tg%$"] = {
 		name = L["Target's Gender"],
 		func = function()
 			if not UnitExists("target") then
@@ -376,63 +376,63 @@ Module.patterns = {
 	},
 	
 	-- target health
-	["%%th%%"] = {
+	["%$th%$"] = {
 		name = L["Target's Health"],
 		func = function() return UnitExists("target") and UnitHealth("target") or L["<notarget>"] end,
 	},
-	["%%thm%%"] = {
+	["%$thm%$"] = {
 		name = L["Target's Max Health"],
 		func = function() return UnitExists("target") and UnitHealthMax("target") or L["<notarget>"] end,
 	},
-	["%%thp%%"] = {
+	["%$thp%$"] = {
 		name = L["Target's Health Percent"],
 		func = function() return UnitExists("target") and math.floor(UnitHealth("target") / UnitHealthMax("target") * 100) or L["<notarget>"] end,
 	},
-	["%%thd%%"] = {
+	["%$thd%$"] = {
 		name = L["Target's Health Deficit"],
 		func = function() return UnitExists("target") and UnitHealthMax("target") - UnitHealth("target") or L["<notarget>"] end,
 	},
 	
 	-- target mana
-	["%%tm%%"] = {
+	["%$tm%$"] = {
 		name = L["Target's Mana"],
 		func = function() return UnitExists("target") and UnitPower("target") or L["<notarget>"] end,
 	},
-	["%%tmm%%"] = {
+	["%$tmm%$"] = {
 		name = L["Target's Max Mana"],
 		func = function() return UnitExists("target") and UnitPowerMax("target") or L["<notarget>"] end,
 	},
-	["%%tmp%%"] = {
+	["%$tmp%$"] = {
 		name = L["Target's Mana Percent"],
 		func = function() return UnitExists("target") and math.floor(UnitPower("target") / UnitPowerMax("target") * 100) or L["<notarget>"] end,
 	},
-	["%%tmd%%"] = {
+	["%$tmd%$"] = {
 		name = L["Target's Mana Deficit"],
 		func = function() return UnitExists("target") and UnitPowerMax("target") - UnitPower("target") or L["<notarget>"] end,
 	},
 	
 	-- date/time subs
-	["%%date%%"] = {
+	["%$date%$"] = {
 		name = L["Date"],
 		func = function() return date("%Y-%m-%d") end,
 	},
-	["%%time%%"] = {
+	["%$time%$"] = {
 		name = L["Time"],
 		func = function() return ("%s:%s%s"):format(date("%I"), date("%M"), date("%p"):lower()) end,
 	},
-	["%%day%%"] = {
+	["%$day%$"] = {
 		name = L["Day"],
 		func = function() return date("%A") end,
 	},
-	["%%mon%%"] = {
+	["%$mon%$"] = {
 		name = L["Month"],
 		func = function() return date("%B") end,
 	},
-	["%%year%%"] = {
+	["%$year%$"] = {
 		name = L["Year"],
 		func = function() return date("%Y") end,
 	},
-	["%%hour%%"] = {
+	["%$hour%$"] = {
 		name = L["Hour (12hr)"],
 		func = function() return date("%I") end,
 	},
@@ -440,17 +440,17 @@ Module.patterns = {
 		name = L["Hour (24hr)"],
 		func = function() return date("%H") end,
 	},
-	["%%min%%"] = {
+	["%$min%$"] = {
 		name = L["Minute"],
 		func = function() return date("%M") end,
 	},
-	["%%sec%%"] = {
+	["%$sec%$"] = {
 		name = L["Second"],
 		func = function() return date("%S") end,
 	},
 	
 	-- misc
-	["%%rand%%"] = {
+	["%$rand%$"] = {
 		name = L["Random Number"],
 		func = function() return math.random(1, 100) end,
 	},
