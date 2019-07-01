@@ -6,7 +6,7 @@ local debug = false
 debug = true
 --@end-debug@
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
-local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, debug)
+local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "enUS", true, not debug)
 if not L then return end
 
 L["   |cff00ff00%s|r - %s"] = true
