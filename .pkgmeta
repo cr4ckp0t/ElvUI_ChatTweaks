@@ -44,7 +44,7 @@ externals:
 	Libraries\LibSharedMedia-3.0:
 		url: https://repos.wowace.com/wow/libsharedmedia-3-0/trunk
 	Libraries\LibSink-2.0:
-		url: https://repos.wowace.com/wow/libsink-2-0/trunk
+		url: https://repos.wowace.com/wow/libsink-2-0/trunk/libsink-2.0
 		
 move-folders:
 	ElvUI_ChatTweaks/Debug: ElvUI_ChatTweaks_Debug
