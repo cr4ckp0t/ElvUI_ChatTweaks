@@ -1,7 +1,7 @@
 ## Interface: 80200
 ## Author: Crackpotx
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 8.0.14
+## Version: 8.0.15
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
@@ -25,11 +25,11 @@ Libraries\Ace3\AceTab-3.0\AceTab-3.0.xml
 Libraries\Ace3\AceTimer-3.0\AceTimer-3.0.xml
 Libraries\LibAlts-1.0\lib.xml
 Libraries\LibDataBroker-1.1\LibDataBroker-1.1.lua
-Libraries\LibDBIcon-1.0\LibDBIcon-1.0.lua
+Libraries\LibDBIcon-1.0\LibDBIcon-1.0\lib.xml
 Libraries\LibElv-GameMenu-1.0\LibElv-GameMenu-1.0.lua
 Libraries\LibPetJournal-2.0\LibPetJournal-2.0.lua
 Libraries\LibSharedMedia-3.0\lib.xml
-Libraries\LibSink-2.0\lib.xml
+Libraries\LibSink-2.0\LibSink-2.0\lib.xml
 
 Locales\enUS.lua
 Locales\deDE.lua
