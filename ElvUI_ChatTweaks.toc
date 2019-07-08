@@ -1,7 +1,7 @@
 ## Interface: 80200
 ## Author: Crackpotx
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 8.0.15
+## Version: 8.0.16
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
