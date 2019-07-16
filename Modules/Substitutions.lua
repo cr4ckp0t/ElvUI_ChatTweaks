@@ -115,7 +115,7 @@ function Module:GetKeywords()
 	local str = ""
 	local keyword = "%s %s(%s)|r, "
 	for index, value in pairs(self.patterns) do
-		str = str .. keyword:format(ElvUI_ChatTweaks.hexColor, value.name, index:gsub("%%%%", "%%"))
+		str = str .. keyword:format(ElvUI_ChatTweaks.hexColor, value.name, index:gsub("%%%$", "%$"))
 	end
 	return str:sub(1, #str - 2)
 end
@@ -129,7 +129,7 @@ function Module:BuildPatterns(patterns)
 	for key, value in pairs(patterns) do
 		out[#out + 1] = {
 			name = value.name,
-			pat = key:gsub("%%%%", "%%"),
+			pat = key:gsub("%%%$", "%$"),
 		}
 	end
 	sort(out, function(a, b) return a.name < b.name end)
@@ -436,7 +436,7 @@ Module.patterns = {
 		name = L["Hour (12hr)"],
 		func = function() return date("%I") end,
 	},
-	["%%h24%%"] = {
+	["%$h24%$"] = {
 		name = L["Hour (24hr)"],
 		func = function() return date("%H") end,
 	},
