@@ -1,4 +1,4 @@
-## Interface: 80100
+## Interface: 80205
 ## Author: Crackpotx
 ## Title: |cff1784d1ElvUI|r Chat Tweaks [|cff00ff96Extra Modules|r]
 ## Notes: Adds extra modules to ElvUI Chat Tweaks that could be considered superfluous.
