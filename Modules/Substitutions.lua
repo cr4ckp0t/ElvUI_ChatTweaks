@@ -9,6 +9,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Substitutions"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
+local C_Map_GetBestMapForUnit = C_Map.GetBestMapForUnit
+local C_Map_GetMapInfo = C_Map.GetMapInfo
+local C_Map_GetPlayerMapPosition = C_Map.GetPlayerMapPosition
 local unpack = _G["unpack"]
 local UnitName = _G["UnitName"]
 local UnitClass = _G["UnitClass"]
@@ -20,8 +23,6 @@ local UnitPower = _G["UnitPower"]
 local UnitPowerMax = _G["UnitPowerMax"]
 local GetRealZoneText = _G["GetRealZoneText"]
 local UnitExists = _G["UnitExists"]
-local UnitMana = _G["UnitMana"]
-local UnitManaMax = _G["UnitManaMax"]
 
 local db, options
 local defaults = {
@@ -52,7 +53,7 @@ end
 
 function Module:AddMessage(frame, text, ...)
 	local id = frame:GetID()
-	local color = ("%02x%02x%02x"):format(db.color.r * 255, db.color.g * 255, db.color.b * 255)
+	if not db or not db.frames then return end
 	if id and db.frames[id] then
 		if not text then
 			return self.hooks[frame].AddMessage(frame, text, ...)
@@ -61,7 +62,7 @@ function Module:AddMessage(frame, text, ...)
 			if value.func then
 				if db.highlight then
 					local result = value.func() or ""
-					text = text:gsub(index, ("|cff%s%s|r"):format(color, result))
+					text = text:gsub(index, ("|cff%02x%02x%02x%s|r"):format(db.color.r * 255, db.color.g * 255, db.color.b * 255, result))
 				else
 					text = text:gsub(index, value.func)
 				end
@@ -129,7 +130,7 @@ function Module:BuildPatterns(patterns)
 	for key, value in pairs(patterns) do
 		out[#out + 1] = {
 			name = value.name,
-			pat = key:gsub("%%%$", "%$"),
+			pat = key:gsub("%%%$", "$"),
 		}
 	end
 	sort(out, function(a, b) return a.name < b.name end)
@@ -310,37 +311,31 @@ Module.patterns = {
 	["%$pos%$"] = {
 		name = L["Player's Location"],
 		func = function()
-			if E.MapInfo then
-				local x, y = E.MapInfo.x, E.MapInfo.y
-				if (x == nil or y == nil) then
-					return L["<no location>"]
-				end
-				return ("%d, %d"):format(math.floor((x * 100) + 0.5), math.floor((y * 100) + 0.5))
+			local tarPos = C_Map_GetPlayerMapPosition(C_Map_GetBestMapForUnit("player"), "player")
+			if (tarPos.x == nil or tarPos.y == nil) then
+				return L["<no location>"]
 			end
+			return ("%d, %d"):format(math.ceil((tarPos.x * 10000) / 100), math.ceil((tarPos.y * 10000) / 100))
 		end,
 	},
 	["%$posx%$"] = {
 		name = L["Player's X-Coordinate"],
 		func = function()
-			if E.MapInfo then
-				local x, _ = E.MapInfo.x, _
-				if (x == nil) then
-					return L["<no location>"]
-				end
-				return math.floor((x * 100) + 0.5)
+			local tarPos = C_Map_GetPlayerMapPosition(C_Map_GetBestMapForUnit("player"), "player")
+			if (tarPos.x == nil) then
+				return L["<no location>"]
 			end
+			return math.ceil((tarPos.x * 10000) / 100)
 		end,
 	},
 	["%$posy%$"] = {
 		name = L["Player's Y-Coordinate"],
 		func = function()
-			if E.MapInfo then
-				local _, y = _, E.MapInfo.y
-				if (y == nil) then
-					return L["<no location>"]
-				end
-				return math.floor((y * 100) + 0.5)
+			local tarPos = C_Map_GetPlayerMapPosition(C_Map_GetBestMapForUnit("player"), "player")
+			if (y == nil) then
+				return L["<no location>"]
 			end
+			return math.floor((tarPos.y * 10000) / 100)
 		end,
 	},
 	
