@@ -63,7 +63,7 @@ function Module:PLAYER_REGEN_DISABLED()
 end
 
 function Module:COMBAT_LOG_EVENT_UNFILTERED()
-if IsAddOnLoaded("ElvUI_KlixUI") then return end
+	if IsAddOnLoaded("ElvUI_KlixUI") then return end
 	local _, event, _, _, sourceName, _, _, _, destName, _, _, spellID, _ = CombatLogGetCurrentEventInfo()
 	if event == "SPELL_CAST_SUCCESS" and GetNumGroupMembers() > 0 and (Drums[spellID] or Bloodlust[spellID] or PetBL[spellID]) and (UnitPlayerOrPetInParty(sourceName) or UnitPlayerOrPetInRaid(sourceName)) then
 		local chatType = "PARTY"

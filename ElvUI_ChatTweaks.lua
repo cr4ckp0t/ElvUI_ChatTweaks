@@ -606,7 +606,7 @@ ElvUI_ChatTweaks.defaults = {
 			["Strip Links"] = false,
 			["Substitutions"] = false,
 			["Text Justification"] = false,
-			["Talent Squelch"] = falswe,
+			["Talent Squelch"] = false,
 			["Who Taunted"] = false,
 		}
 	}

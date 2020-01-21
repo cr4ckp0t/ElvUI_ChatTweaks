@@ -1,4 +1,4 @@
-## Interface: 80205
+## Interface: 80300
 ## Author: Crackpotx
 ## Title: |cff1784d1ElvUI|r Chat Tweaks [|cff00ff96Debug Modules|r]
 ## Notes: Adds modules that are useful for debugging any issues you may be having.
