@@ -23,6 +23,7 @@
 	<Script file="Modules\GKickCommand.lua" />
 	<Script file="Modules\GInvCommand.lua" />
 	<Script file="Modules\GroupSay.lua" />
+	<Script file="Modules\HoverLink.lua" />
 	<Script file="Modules\IdentifyChatFrames.lua" />
 	<Script file="Modules\ImprovedAuctionMessages.lua" />
 	<Script file="Modules\InCommand.lua" />
@@ -45,6 +46,7 @@
 	<Script file="Modules\RolePoll.lua" />
 	<Script file="Modules\ScrollReminder.lua" />
 	<Script file="Modules\Search.lua" />
+	<Script file="Modules\SemiAutoCongratulate.lua" />
 	<Script file="Modules\Substitutions.lua" />
 	<Script file="Modules\TalentSquelch.lua" />
 	<Script file="Modules\TellTarget.lua" />
