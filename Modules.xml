@@ -4,11 +4,6 @@
 	<Script file="Modules\AFKDND_Filter.lua" />
 	<Script file="Modules\AltNames.lua" />
 	<Script file="Modules\AuctionMessageFilter.lua" />
-	<Script file="Modules\AutoCongratulate.lua" />
-	<Script file="Modules\AutoDing.lua" />
-	<Script file="Modules\AutoFarewell.lua" />
-	<Script file="Modules\AutoProfessionLink.lua" />	
-	<Script file="Modules\AutoWelcome.lua" />
 	<Script file="Modules\ChannelColors.lua" />
 	<Script file="Modules\ChannelNames.lua" />
 	<Script file="Modules\ChannelNoticeFilter.lua" />
