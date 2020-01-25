@@ -2,6 +2,7 @@
 -- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
+local E, _, _, _, _ = unpack(ElvUI)
 local Module = ElvUI_ChatTweaks:NewModule("Hover Links", "AceHook-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Hover Links"]

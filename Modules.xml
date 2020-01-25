@@ -23,7 +23,7 @@
 	<Script file="Modules\GKickCommand.lua" />
 	<Script file="Modules\GInvCommand.lua" />
 	<Script file="Modules\GroupSay.lua" />
-	<Script file="Modules\HoverLink.lua" />
+	<Script file="Modules\HoverLinks.lua" />
 	<Script file="Modules\IdentifyChatFrames.lua" />
 	<Script file="Modules\ImprovedAuctionMessages.lua" />
 	<Script file="Modules\InCommand.lua" />
