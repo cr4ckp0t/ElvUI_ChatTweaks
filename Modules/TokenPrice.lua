@@ -4,6 +4,7 @@
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Token Price", "AceConsole-3.0", "AceEvent-3.0")
+local E, _, V, P, G = unpack(ElvUI)
 local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Token Price"]
 Module.namespace = string.gsub(Module.name, " ", "")
@@ -13,6 +14,7 @@ local C_WowTokenPublic_GetCurrentMarketPrice = C_WowTokenPublic.GetCurrentMarket
 local GetMoneyString = _G["GetMoneyString"]
 
 local format = string.format
+local ceil = math.ceil
 
 local clearCMD = L["|cff00ff00%s|r or |cff00ff00%s|r or |cff00ff00%s|r"]
 
@@ -50,6 +52,15 @@ function comma_value(amount)
 	return formatted
 end
 
+function Module:GetTotalGold()
+	local totalGold = 0
+	if not ElvDB then return 0 end
+	for k, _ in pairs(ElvDB.gold[E.myrealm]) do
+		totalGold = totalGold + ElvDB.gold[E.myrealm][k]
+	end
+	return totalGold
+end
+
 function Module:PLAYER_LOGIN()
 	if db.login then
 		C_WowTokenPublic_UpdateMarketPrice()
@@ -76,6 +87,16 @@ function Module:OnEnable()
 	self:RegisterChatCommand("tp", function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
 	self:RegisterChatCommand("token",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
 	self:RegisterChatCommand("tokens",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
+	self:RegisterChatCommand("bront", function(args)
+		local textOnly = not E.db.datatexts.goldCoins and true or false
+		local style = E.db.datatexts.goldFormat or 'BLIZZARD'
+		local tPrice = C_WowTokenPublic_GetCurrentMarketPrice() or 0
+		local curGold = self:GetTotalGold()
+		local remaining = 50000000000 - curGold
+		local tokens = ceil(remaining / tPrice)
+		self:Print((L["Remaining: %s, Cost: $%d"]):format(E:FormatMoney(remaining, style, textOnly), 20 * tokens))
+		self:Print((L["Total Cost: $%d"]):format(ceil((50000000000 / tPrice)) * 20))
+	end)
 end
 
 function Module:OnDisable()
@@ -85,6 +106,7 @@ function Module:OnDisable()
 	self:UnregisterChatCommand("tp")
 	self:UnregisterChatCommand("token")
 	self:UnregisterChatCommand("tokens")
+	self:UnregisterChatCommand("bront")
 end
 
 function Module:OnInitialize()

@@ -33,6 +33,7 @@ ElvUI_ChatTweaks.options = {
 	name = ElvUI_ChatTweaks.addonName,
 	args = {},
 }
+ElvUI_ChatTweaks.E = E
 ElvUI_ChatTweaks.L = L
 ElvUI_ChatTweaks.NewSign = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:14:14|t"
 ElvUI_ChatTweaks.Icon = [[Interface\Addons\ElvUI_ChatTweaks\Textures\icon.tga]]
