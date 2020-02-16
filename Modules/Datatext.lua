@@ -117,7 +117,7 @@ local function OnEnter(self)
 	
 	-- build the tooltip
 	DT.tooltip:ClearLines()
-	DT.tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Crackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
+	DT.tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff0070deCrackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
 	DT.tooltip:AddLine(" ")
 	
 	-- module info

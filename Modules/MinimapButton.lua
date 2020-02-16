@@ -56,7 +56,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 		local active, inactive, total = ElvUI_ChatTweaks:GetModuleStatus()
 		-- build the tooltip
 		tooltip:ClearLines()
-		tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff9382c9Crackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
+		tooltip:AddLine((L["%sElvUI Chat Tweaks|r by |cff0070deCrackpotx|r"]):format(ElvUI_ChatTweaks.hexColor))
 		tooltip:AddLine(" ")
 		
 		-- module info
