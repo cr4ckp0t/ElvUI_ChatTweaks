@@ -441,14 +441,28 @@ end
 function Module:PLAYER_TARGET_CHANGED(event)
 	if not UnitExists("target") or not UnitIsPlayer("target") or not UnitIsFriend("player", "target") then return end
 	local _, class = UnitClass("target")
-	local name, level = UnitName("target"), UnitLevel("target")
+	local name, realm = UnitName("target")
+	local level = UnitLevel("target")
+
+	realm = realm or GetRealmName()
+	if not name:find("-") then
+		name = name .. "-" .. realm
+	end
+	
 	self:AddPlayer(name, class, level, Module.db.global.saveTarget)
 end
 
 function Module:UPDATE_MOUSEOVER_UNIT(event)
 	if not UnitExists("mouseover") or not UnitIsPlayer("mouseover") or not UnitIsFriend("player", "mouseover") then return end
 	local _, class = UnitClass("mouseover")
-	local name, level = UnitName("mouseover"), UnitLevel("mouseover")
+	local name, realm = UnitName("mouseover")
+	local level = UnitLevel("mouseover")
+
+	realm = realm or GetRealmName()
+	if not name:find("-") then
+		name = name .. "-" .. realm
+	end
+
 	self:AddPlayer(name, class, level, Module.db.global.saveTarget)
 end
 
