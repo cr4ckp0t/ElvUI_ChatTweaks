@@ -337,7 +337,7 @@ local function changeName(header, name, extra, count, display, body)
 	end
 	
 	cache[name] = display
-	
+
 	local level
 	local tab = Module.db.realm.names[name] or localNames[name]
 	if tab then
@@ -453,9 +453,15 @@ function Module:UPDATE_MOUSEOVER_UNIT(event)
 end
 
 function Module:WHO_LIST_UPDATE(event)
+	local realmName = GetRealmName()
 	if GetNumWhoResults() <= 3 or Module.db.global.saveAllWho then
 		for i =1, GetNumWhoResults() do
 			local name, _, level, _, _, _, class = GetWhoInfo(i)
+			
+			if not name:find("-") then
+				name = name .. "-" .. realmName
+			end
+
 			if class then
 				self:AddPlayer(name, class, level, Module.db.global.saveWho)
 			end
