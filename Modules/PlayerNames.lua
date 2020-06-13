@@ -405,10 +405,14 @@ end
 function Module:GUILD_ROSTER_UPDATE(event)
 	if not IsInGuild() then return end
 	wipe(channels.GUILD)
+	local realm = GetRealmName()	
 	for i = 1, GetNumGuildMembers() do
 		local name, _, _, level, _, _, _, _, online, _, class, _, _, isMobile = GetGuildRosterInfo(i)
 		if online and not isMobile then
 			channels.GUILD[name] = name
+		end
+		if not name:find("-") then
+			name = name .. "-" .. realm
 		end
 		if not isMobile then self:AddPlayer(name, class, level, Module.db.global.saveGuild) end
 	end
@@ -418,11 +422,18 @@ function Module:GROUP_ROSTER_UPDATE(event)
 	wipe(channels.PARTY)
 	wipe(channels.RAID)
 	
+	local realm = GetRealmName()
+
 	if IsInRaid() then
 		for i = 1, GetNumGroupMembers() do
 			local name, _, _, level, _, class = GetRaidRosterInfo(i)
 			if name and level and class then
 				channels.RAID[name] = true
+				
+				if not name:find("-") then
+					name = name .. "-" .. realm
+				end
+
 				self:AddPlayer(name, class, level, Module.db.global.saveGroup)
 			end
 		end
@@ -433,6 +444,11 @@ function Module:GROUP_ROSTER_UPDATE(event)
 			local _, class = UnitClass(unit)
 			local level = UnitLevel(unit)
 			channels.PARTY[name] = true
+
+			if not name:find("-") then
+				name = name .. "-" .. realm
+			end
+
 			self:AddPlayer(name, class, level, Module.db.global.saveGroup)
 		end
 	end
