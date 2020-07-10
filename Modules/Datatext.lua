@@ -147,3 +147,4 @@ E["valueColorUpdateFuncs"][ValueColorUpdate] = true
 
 -- register the datatext w/ elvui
 DT:RegisterDatatext(L["Chat Tweaks"], nil, {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave, L["Chat Tweaks"])
+--DT:RegisterDatatext(L["Chat Tweaks"], {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave)
