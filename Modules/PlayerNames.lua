@@ -337,7 +337,7 @@ local function changeName(header, name, extra, count, display, body)
 	end
 	
 	cache[name] = display
-	
+
 	local level
 	local tab = Module.db.realm.names[name] or localNames[name]
 	if tab then
@@ -405,10 +405,14 @@ end
 function Module:GUILD_ROSTER_UPDATE(event)
 	if not IsInGuild() then return end
 	wipe(channels.GUILD)
+	local realm = GetRealmName()	
 	for i = 1, GetNumGuildMembers() do
 		local name, _, _, level, _, _, _, _, online, _, class, _, _, isMobile = GetGuildRosterInfo(i)
 		if online and not isMobile then
 			channels.GUILD[name] = name
+		end
+		if not name:find("-") then
+			name = name .. "-" .. realm
 		end
 		if not isMobile then self:AddPlayer(name, class, level, Module.db.global.saveGuild) end
 	end
@@ -418,11 +422,18 @@ function Module:GROUP_ROSTER_UPDATE(event)
 	wipe(channels.PARTY)
 	wipe(channels.RAID)
 	
+	local realm = GetRealmName()
+
 	if IsInRaid() then
 		for i = 1, GetNumGroupMembers() do
 			local name, _, _, level, _, class = GetRaidRosterInfo(i)
 			if name and level and class then
 				channels.RAID[name] = true
+				
+				if not name:find("-") then
+					name = name .. "-" .. realm
+				end
+
 				self:AddPlayer(name, class, level, Module.db.global.saveGroup)
 			end
 		end
@@ -433,6 +444,11 @@ function Module:GROUP_ROSTER_UPDATE(event)
 			local _, class = UnitClass(unit)
 			local level = UnitLevel(unit)
 			channels.PARTY[name] = true
+
+			if not name:find("-") then
+				name = name .. "-" .. realm
+			end
+
 			self:AddPlayer(name, class, level, Module.db.global.saveGroup)
 		end
 	end
@@ -441,21 +457,41 @@ end
 function Module:PLAYER_TARGET_CHANGED(event)
 	if not UnitExists("target") or not UnitIsPlayer("target") or not UnitIsFriend("player", "target") then return end
 	local _, class = UnitClass("target")
-	local name, level = UnitName("target"), UnitLevel("target")
+	local name, realm = UnitName("target")
+	local level = UnitLevel("target")
+
+	realm = realm or GetRealmName()
+	if not name:find("-") then
+		name = name .. "-" .. realm
+	end
+	
 	self:AddPlayer(name, class, level, Module.db.global.saveTarget)
 end
 
 function Module:UPDATE_MOUSEOVER_UNIT(event)
 	if not UnitExists("mouseover") or not UnitIsPlayer("mouseover") or not UnitIsFriend("player", "mouseover") then return end
 	local _, class = UnitClass("mouseover")
-	local name, level = UnitName("mouseover"), UnitLevel("mouseover")
+	local name, realm = UnitName("mouseover")
+	local level = UnitLevel("mouseover")
+
+	realm = realm or GetRealmName()
+	if not name:find("-") then
+		name = name .. "-" .. realm
+	end
+
 	self:AddPlayer(name, class, level, Module.db.global.saveTarget)
 end
 
 function Module:WHO_LIST_UPDATE(event)
+	local realmName = GetRealmName()
 	if GetNumWhoResults() <= 3 or Module.db.global.saveAllWho then
 		for i =1, GetNumWhoResults() do
 			local name, _, level, _, _, _, class = GetWhoInfo(i)
+			
+			if not name:find("-") then
+				name = name .. "-" .. realmName
+			end
+
 			if class then
 				self:AddPlayer(name, class, level, Module.db.global.saveWho)
 			end
