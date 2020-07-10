@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
+-- ElvUI Chat Tweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local E, _, V, P, G = unpack(ElvUI)
@@ -277,9 +277,10 @@ function ElvUI_ChatTweaks:PrintHelp()
 		elseif module:IsEnabled() and name == "Token Price" then
 			print(format(clrStr, "/tp", "/token", L["Show current token price."]))
 		elseif module:IsEnabled() and name == "Who Whispered Me" then
-			print(format(cmdStr, "/ws", L["Show how many whispers, you've received this session."]))
-		elseif module:IsEnabled() and name == "Rare Announce" then
-			print(format(cmdStr, "/rare", L["Announce your target (a rare mob)."]))
+			print(format(cmdStr, "/ws", L["Show how many whispers you've received this session."]))
+		elseif module:IsEnabled() and name == "Keystone Progress" then
+			print(format(cmdStr, "/ksm", L["Display Keystone Master achievement progress."]))
+			print(format(cmdStr, "/ksc", L["Display Keystone Conqueror achievement progress."]))
 		end
 	end
 end

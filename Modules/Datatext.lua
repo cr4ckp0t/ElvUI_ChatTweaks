@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
+-- ElvUI Chat Tweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Datatext", "AceConsole-3.0", "AceTimer-3.0")
@@ -146,4 +146,4 @@ end
 E["valueColorUpdateFuncs"][ValueColorUpdate] = true
 
 -- register the datatext w/ elvui
-DT:RegisterDatatext("Chat Tweaks", {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave)
+DT:RegisterDatatext(L["Chat Tweaks"], nil, {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave, L["Chat Tweaks"])

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
+-- ElvUI Chat Tweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Channel Notice Filter", "AceConsole-3.0", "AceHook-3.0", "AceEvent-3.0")

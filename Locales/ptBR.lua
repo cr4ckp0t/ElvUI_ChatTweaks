@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
+-- ElvUI_ChatTweaks By Crackpot (US, Thrall)
 --------------------------------------------------------------------------------
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI_ChatTweaks", "ptBR", false)

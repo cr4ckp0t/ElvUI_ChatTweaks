@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
+-- ElvUI Chat Tweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 -- Module Written by Björn Benjamin Hiller <bjoern.hiller@gmail.com>

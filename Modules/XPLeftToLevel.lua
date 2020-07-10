@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpotx (US, Lightbringer)
+-- ElvUI Chat Tweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("XP Left To Level", "AceConsole-3.0", "AceEvent-3.0")

@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
+-- ElvUI_ChatTweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("You Need To Move", "AceConsole-3.0", "AceEvent-3.0")

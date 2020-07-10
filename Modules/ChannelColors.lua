@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI_ChatTweaks By Crackpotx (US, Lightbringer)
+-- ElvUI_ChatTweaks By Crackpot (US, Thrall)
 -- Based on functionality provided by Prat and/or Chatter
 -- Module Created By Klix (EU, Twisting Nether)
 -------------------------------------------------------------------------------

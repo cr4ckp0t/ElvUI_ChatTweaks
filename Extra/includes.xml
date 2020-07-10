@@ -8,6 +8,7 @@
 	<Script file="..\ElvUI_ChatTweaks\Modules\FakeAchievement.lua" />
 	<Script file="..\ElvUI_ChatTweaks\Modules\FunFilters.lua" />
 	<Script file="..\ElvUI_ChatTweaks\Modules\GoldCalculator.lua" />
+	<Script file="..\ElvUI_ChatTweaks\Modules\KeystoneProgress.lua" />
 	<Script file="..\ElvUI_ChatTweaks\Modules\Magic8Ball.lua" />
 	<Script file="..\ElvUI_ChatTweaks\Modules\PetBattles.lua" />
 </Ui>
