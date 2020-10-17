@@ -30,7 +30,7 @@ local UnitExists = _G["UnitExists"]
 local UnitIsPlayer = _G["UnitIsPlayer"]
 local UnitIsFriend = _G["UnitIsFriend"]
 local C_FriendList_GetNumWhoResults = C_FriendList.GetNumWhoResults
-local C_FriendLIst_GetWhoInfo = C_FriendList.GetWhoInfo
+local C_FriendList_GetWhoInfo = C_FriendList.GetWhoInfo
 local BNGetNumFriends = _G["BNGetNumFriends"]
 local BNGetFriendInfo = _G["BNGetFriendInfo"]
 local GetAddOnMemoryUsage = _G["GetAddOnMemoryUsage"]
@@ -488,14 +488,14 @@ function Module:WHO_LIST_UPDATE(event)
 	local realmName = GetRealmName()
 	if C_FriendList_GetNumWhoResults() <= 3 or Module.db.global.saveAllWho then
 		for i =1, C_FriendList_GetNumWhoResults() do
-			local name, _, level, _, _, _, class = C_FriendList_GetWhoInfo(i)
-			
-			if not name:find("-") then
-				name = name .. "-" .. realmName
+			local whoInfo = C_FriendList_GetWhoInfo(i)
+
+			if not whoInfo.fullName:find("-") then
+				whoInfo.fullName = whoInfo.fullName .. "-" .. realmName
 			end
 
-			if class then
-				self:AddPlayer(name, class, level, Module.db.global.saveWho)
+			if whoInfo.classStr then
+				self:AddPlayer(whoInfo.fullName, whoInfo.classStr, whoInfo.level, Module.db.global.saveWho)
 			end
 		end
 	end

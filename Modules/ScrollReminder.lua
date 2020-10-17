@@ -15,7 +15,7 @@ local format = string.format
 local buttonsEnabled = false
 
 function Module:CreateBottomButton(frame)
-	local button = CreateFrame("Button", nil, frame)
+	local button = CreateFrame("Button", nil, frame, "BackdropTemplate")
 	button:SetHeight(22)
 	button:SetWidth(20)
 	button:SetAlpha(0.60)
