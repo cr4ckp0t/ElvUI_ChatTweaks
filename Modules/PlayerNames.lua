@@ -9,14 +9,15 @@ local AceTab = LibStub("AceTab-3.0")
 Module.name = L["Player Names"]
 Module.namespace = string.gsub(Module.name, " ", "")
 
+-- local api cache
 local UnitName = _G["UnitName"]
 local UnitClass = _G["UnitClass"]
 local ChatEdit_GetActiveWindow = _G["ChatEdit_GetActiveWindow"]
 local GetChannelName = _G["GetChannelName"]
 local BNGetToonInfo = _G["BNGetToonInfo"]
 local GetQuestDifficultyColor = _G["GetQuestDifficultyColor"]
-local GetNumFriends = _G["GetNumFriends"]
-local GetFriendInfo = _G["GetFriendInfo"]
+local C_FriendList_GetNumFriends = C_FriendList.GetNumFriends
+local C_FriendList_GetFriendInfo = C_FriendList.GetFriendInfo
 local IsInGuild = _G["IsInGuild"]
 local GetNumGuildMembers = _G["GetNumGuildMembers"]
 local GetGuildRosterInfo = _G["GetGuildRosterInfo"]
@@ -28,11 +29,12 @@ local GetNumSubgroupMembers = _G["GetNumSubgroupMembers"]
 local UnitExists = _G["UnitExists"]
 local UnitIsPlayer = _G["UnitIsPlayer"]
 local UnitIsFriend = _G["UnitIsFriend"]
-local GetNumWhoResults = _G["GetNumWhoResults"]
-local GetWhoInfo = _G["GetWhoInfo"]
+local C_FriendList_GetNumWhoResults = C_FriendList.GetNumWhoResults
+local C_FriendLIst_GetWhoInfo = C_FriendList.GetWhoInfo
 local BNGetNumFriends = _G["BNGetNumFriends"]
 local BNGetFriendInfo = _G["BNGetFriendInfo"]
 local GetAddOnMemoryUsage = _G["GetAddOnMemoryUsage"]
+local C_GuildInfo_GuildRoster = C_GuildInfo.GuildRoster
 
 local gsub = string.gsub
 local match = string.match
@@ -394,8 +396,8 @@ function Module:AddMessage(frame, text, ...)
 end
 
 function Module:FRIENDLIST_UPDATE(event)
-	for i = 1, GetNumFriends() do
-		local name, level, class = GetFriendInfo(i)
+	for i = 1, C_FriendList_GetNumFriends() do
+		local name, level, class = C_FriendList_GetFriendInfo(i)
 		if class then
 			self:AddPlayer(name, localClass[class], level, Module.db.global.saveFriends)
 		end
@@ -484,9 +486,9 @@ end
 
 function Module:WHO_LIST_UPDATE(event)
 	local realmName = GetRealmName()
-	if GetNumWhoResults() <= 3 or Module.db.global.saveAllWho then
-		for i =1, GetNumWhoResults() do
-			local name, _, level, _, _, _, class = GetWhoInfo(i)
+	if C_FriendList_GetNumWhoResults() <= 3 or Module.db.global.saveAllWho then
+		for i =1, C_FriendList_GetNumWhoResults() do
+			local name, _, level, _, _, _, class = C_FriendList_GetWhoInfo(i)
 			
 			if not name:find("-") then
 				name = name .. "-" .. realmName
@@ -546,7 +548,7 @@ function Module:OnEnable()
 	self:RegisterEvent("CHAT_MSG_CHANNEL_LEAVE")
 	self:RegisterEvent("CHAT_MSG_CHANNEL", "CHAT_MSG_CHANNEL_JOIN")
 	
-	if IsInGuild() then GuildRoster() end
+	if IsInGuild() then C_GuildInfo_GuildRoster() end
 	self:GROUP_ROSTER_UPDATE()
 	
 	for i = 1, NUM_CHAT_WINDOWS do

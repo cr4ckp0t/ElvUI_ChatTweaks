@@ -1,7 +1,7 @@
 ## Interface: 90001
 ## Author: Crackpotx
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 9.0.0
+## Version: 9.0.1
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
