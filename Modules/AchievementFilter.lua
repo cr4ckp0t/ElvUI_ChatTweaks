@@ -11,7 +11,7 @@ local ChatFrame_AddMessageEventFilter = _G["ChatFrame_AddMessageEventFilter"]
 local ChatFrame_RemoveMessageEventFilter = _G["ChatFrame_RemoveMessageEventFilter"]
 local GetMaxPlayerLevel = _G["GetMaxPlayerLevel"]
 
-local format 	= string.format
+local format = string.format
 
 local db, options
 local defaults = {
@@ -19,7 +19,7 @@ local defaults = {
 		guild = false,
 		nearby = true,
 		byLevel = true,
-		level = 85,
+		level = 60,
 	}
 }
 

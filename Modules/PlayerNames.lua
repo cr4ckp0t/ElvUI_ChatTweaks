@@ -33,6 +33,7 @@ local C_FriendList_GetNumWhoResults = C_FriendList.GetNumWhoResults
 local C_FriendList_GetWhoInfo = C_FriendList.GetWhoInfo
 local BNGetNumFriends = _G["BNGetNumFriends"]
 local BNGetFriendInfo = _G["BNGetFriendInfo"]
+local C_BattleNet_GetFriendAccountInfo = C_BattleNet.GetFriendAccountInfo
 local GetAddOnMemoryUsage = _G["GetAddOnMemoryUsage"]
 local C_GuildInfo_GuildRoster = C_GuildInfo.GuildRoster
 
@@ -571,7 +572,7 @@ function Module:OnEnable()
 	if Module.db.global.noRealNames then
 		local _, n = BNGetNumFriends()
 		for i = 1, n do
-			local _, _, _, _, toon, id, _ = BNGetFriendInfo(i)
+			local _, _, _, _, toon, id, _ = C_BattleNet_GetFriendAccountInfo(i)
 			storedName[id] = toon
 		end
 	end
