@@ -1,0 +1,13 @@
+tag e8bb3549d7a3d8632e661608cb250ce04000d0fd 9.0.4
+Author:	Adam Koch <me@adamko.ch>
+Date:	Tue Mar 9 10:52:25 2021 -0500
+
+9.0.4 Release
+
+commit 77389696efae75d3a7a1e45ab1e562e260378bc6
+Author: Adam Koch <me@adamko.ch>
+Date:   Tue Mar 9 10:52:10 2021 -0500
+
+    Various module fixes.
+    Update TOC for 9.0.5.
+
