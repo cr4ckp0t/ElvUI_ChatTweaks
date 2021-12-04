@@ -19,7 +19,6 @@
 	<Script file="Modules\EasyChannel.lua" />
 	<Script file="Modules\EditBoxAltKeyArrows.lua" />
 	<Script file="Modules\EmoteFilter.lua" />
-	<Script file="Modules\GamemenuButton.lua" />
 	<Script file="Modules\GKickCommand.lua" />
 	<Script file="Modules\GInvCommand.lua" />
 	<Script file="Modules\GroupSay.lua" />

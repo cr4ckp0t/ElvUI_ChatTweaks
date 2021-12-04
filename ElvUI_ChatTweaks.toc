@@ -1,7 +1,7 @@
 ## Interface: 90105
 ## Author: Crackpot
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 9.0.6
+## Version: 9.0.7
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
@@ -11,6 +11,9 @@ Libraries\LibStub\LibStub.lua
 Libraries\CallbackHandler-1.0\CallbackHandler-1.0.xml
 Libraries\Ace3\AceAddon-3.0\AceAddon-3.0.xml
 Libraries\Ace3\AceComm-3.0\AceComm-3.0.xml
+Libraries\Ace3\AceConfig-3.0\AceConfigCmd-3.0\AceConfigCmd-3.0.xml
+Libraries\Ace3\AceConfig-3.0\AceConfigDialog-3.0\AceConfigDialog-3.0.xml
+Libraries\Ace3\AceConfig-3.0\AceConfigRegistry-3.0\AceConfigRegistry-3.0.xml
 Libraries\Ace3\AceConfig-3.0\AceConfig-3.0.xml
 Libraries\Ace3\AceConsole-3.0\AceConsole-3.0.xml
 Libraries\Ace3\AceDB-3.0\AceDB-3.0.xml
@@ -26,7 +29,6 @@ Libraries\Ace3\AceTimer-3.0\AceTimer-3.0.xml
 Libraries\LibAlts-1.0\lib.xml
 Libraries\LibDataBroker-1.1\LibDataBroker-1.1.lua
 Libraries\LibDBIcon-1.0\LibDBIcon-1.0\lib.xml
-Libraries\LibElv-GameMenu-1.0\LibElv-GameMenu-1.0.lua
 Libraries\LibPetJournal-2.0\LibPetJournal-2.0.lua
 Libraries\LibSharedMedia-3.0\lib.xml
 Libraries\LibSink-2.0\LibSink-2.0\lib.xml
