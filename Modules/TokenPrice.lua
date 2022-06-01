@@ -72,18 +72,19 @@ function Module:TOKEN_MARKET_PRICE_UPDATED()
 	if ShowTokenPrice then
 		local currentPrice = C_WowTokenPublic_GetCurrentMarketPrice()
 		if not currentPrice or currentPrice == nil or currentPrice == '' or currentPrice == 0 then
+			ShowTokenPrice = false
 			ElvUI_ChatTweaks:Print("The Blizzard token API is down.")
 			return
 		end
 		ElvUI_ChatTweaks:Print("Current token price:|cffFFFF00 " .. comma_value(GetMoneyString(currentPrice)) .. "")
 		ShowTokenPrice = false
+
 	end
 end
 
 function Module:OnEnable()
 	self:RegisterEvent("PLAYER_LOGIN")
 	self:RegisterEvent("TOKEN_MARKET_PRICE_UPDATED")
-	
 	self:RegisterChatCommand("tp", function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
 	self:RegisterChatCommand("token",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)
 	self:RegisterChatCommand("tokens",	function() C_WowTokenPublic_UpdateMarketPrice(); ShowTokenPrice = true end)

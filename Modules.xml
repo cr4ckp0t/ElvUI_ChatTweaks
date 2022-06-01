@@ -2,7 +2,7 @@
 ..\FrameXML\UI.xsd">
 	<Script file="Modules\AchievementFilter.lua" />
 	<Script file="Modules\AFKDND_Filter.lua" />
-	<Script file="Modules\AltNames.lua" />
+	<!-- <Script file="Modules\AltNames.lua" /> -->
 	<Script file="Modules\AuctionMessageFilter.lua" />
 	<Script file="Modules\ChannelColors.lua" />
 	<Script file="Modules\ChannelNames.lua" />
