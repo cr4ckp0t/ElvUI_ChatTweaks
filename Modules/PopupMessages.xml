@@ -1,6 +1,6 @@
 <!-- Popup Messages Frame -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
-	<Frame name="CT_PopupFrame" hidden="true" toplevel="true">
+	<Frame name="CT_PopupFrame" hidden="true" toplevel="true" inherits="BackdropTemplate">
 		
 		<Anchors>
 			<Anchor point="CENTER">
@@ -14,11 +14,10 @@
 			<minResize x="64" y="64" />
 		</ResizeBounds>
 		
-		<Backdrop edgeFile="Interface\Tooltips\ChatBubble-Backdrop">
-			<EdgeSize>
-				<AbsValue val="32" />
-			</EdgeSize>
-		</Backdrop>
+		<KeyValues>
+			<KeyValue key="edgeFile" value="Interface\Tooltips\ChatBubble-Backdrop" />
+			<KeyValue key="edgeSize" value="32" type="number" />
+		</KeyValues>
 		
 		<Layers>
 			<Layer level="OVERLAY">
