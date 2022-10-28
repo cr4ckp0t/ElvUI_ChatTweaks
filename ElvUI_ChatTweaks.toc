@@ -1,7 +1,7 @@
-## Interface: 90207
+## Interface: 100000
 ## Author: Crackpot
 ## Title: |cff1784d1ElvUI|r Chat Tweaks
-## Version: 9.0.11
+## Version: 9.0.12
 ## Notes: Provides various tweaks to ElvUI's chat frames.
 ## RequiredDeps: ElvUI
 ## OptionalDeps: SharedMedia
@@ -49,4 +49,5 @@ SharedMedia.lua
 ElvUI_ChatTweaks.lua
 StaticPopups.lua
 Modules.xml
+
 
