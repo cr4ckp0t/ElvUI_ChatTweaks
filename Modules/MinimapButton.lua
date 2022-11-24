@@ -34,7 +34,7 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject(ElvUI_ChatTweaks.addonNam
 			if IsShiftKeyDown() then
 				StaticPopup_Show("ECT_ENABLE_ALL")
 			elseif IsControlKeyDown() then
-				E:ToggleOptionsUI()
+				E:ToggleOptions()
 			elseif IsAltKeyDown() then
 				ReloadUI()
 			else
