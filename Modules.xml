@@ -52,6 +52,4 @@
 	<Script file="Modules\Timestamps.lua" />
 	<Script file="Modules\TokenPrice.lua" />
 	<Script file="Modules\XPLeftToLevel.lua" />
-	
-	<Include file="Modules\PopupMessages.xml" />
 </Ui>

@@ -1,5 +1,5 @@
-## Interface: 80300
-## Author: Crackpotx
+## Interface: 100002
+## Author: Crackpot
 ## Title: |cff1784d1ElvUI|r Chat Tweaks [|cff00ff96Debug Modules|r]
 ## Notes: Adds modules that are useful for debugging any issues you may be having.
 ## RequiredDeps: ElvUI_ChatTweaks
