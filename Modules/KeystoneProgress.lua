@@ -8,23 +8,45 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ElvUI_ChatTweaks", false)
 Module.name = L["Keystone Progress"]..ElvUI_ChatTweaks.NewSign
 Module.namespace = string.gsub(Module.name, " ", "")
 
+local pairs = _G["pairs"]
+
 local AddTrackedAchievement = _G["AddTrackedAchievement"]
+local C_ChallengeMode_GetOverallDungeonScore = C_ChallengeMode.GetOverallDungeonScore
 local GetAchievementInfo = _G["GetAchievementInfo"]
+local GetAchievementLink = _G["GetAchievementLink"]
 local IsTrackedAchievement = _G["IsTrackedAchievement"]
 local RemoveTrackedAchievement = _G["RemoveTrackedAchievement"]
 
-local ksmId = 14145
-local kscId = 14144
-local completed = {
-	[14145] = false,
-	[14144] = false,
+local currentScore = 0
+local dfks = {
+	{
+		id = 16647,
+		req = 750,
+		completed = false
+	},
+	{
+		id = 16648,
+		req = 1500,
+		completed = false
+	},
+	{
+		id = 16649,
+		req = 2000,
+		completed = false
+	},
+	{
+		id = 16650,
+		req = 2500,
+		completed = false
+	}
 }
 
 local function AchievementsCompleted()
-	local _, _, _, complete = GetAchievementInfo(ksmId)
-	completed[14145] = complete
-	local _, _, _, complete = GetAchievementInfo(kscId)
-	completed[14144] = complete
+	currentScore = C_ChallengeMode_GetOverallDungeonScore() or 0
+
+	for i = 1, 4 do
+		dfks[i].completed = select(4, GetAchievementInfo(dfks[i].id))
+	end
 end
 
 function Module:ToggleTracking(id)
@@ -45,39 +67,12 @@ end
 function Module:OnEnable()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", AchievementsCompleted)
 	self:RegisterEvent("ACHIEVEMENT_EARNED", AchievementsCompleted)
-
-	self:RegisterChatCommand("ksm", function(args)
-		local action = self:GetArgs(args)
-		local _, name = GetAchievementInfo(ksmId)
-		if action == "track" then
-			self:ToggleTracking(ksmId)
-		else
-			if completed[ksmId] then
-				self:Print((L["You have already completed %s."]):format(name))
-			else
-				self:Print(("|cffffff00%s|r"):format(L["Keystone Master Completion Status"]))
-				for criteria = 1, 12 do
-					local name, _, completed = GetAchievementCriteriaInfo(ksmId, criteria ~= 13 and criteria or 14)
-					self:Print(("|cffffffff%s:|r %s"):format(name, completed and ("|cff00ff00%s|r"):format(L["Complete"]) or ("|cffff0000%s|r"):format(L["Incomplete"])))
-				end
-			end
-		end
-	end)
-	self:RegisterChatCommand("ksc", function(args)
-		local action = self:GetArgs(args)
-		local _, name = GetAchievementInfo(kscId)
-		if action == "track" then
-			self:ToggleTracking(kscId)
-		else 
-			if completed[kscId] then
-				self:Print((L["You have already completed %s."]):format(name))
-			else
-				self:Print(("|cffffff00%s|r"):format(L["Keystone Conqueror Completion Status"]))
-				for criteria = 1, 12 do
-					local name, _, completed = GetAchievementCriteriaInfo(kscId, criteria ~= 13 and criteria or 14)
-					self:Print(("|cffffffff%s:|r %s"):format(name, completed and ("|cff00ff00%s|r"):format(L["Complete"]) or ("|cffff0000%s|r"):format(L["Incomplete"])))
-				end
-			end
+	self:RegisterEvent("MYTHIC_PLUS_CURRENT_AFFIX_UPDATE", AchievementsCompleted)
+	self:RegisterEvent("MYTHIC_PLUS_NEW_WEEKLY_RECORD", AchievementsCompleted)
+	self:RegisterChatCommand("kprog", function(args)
+		for i = 1, 4 do
+			local completedStr = dfks[i].completed == true and ("|cff00ff00%s|r"):format(L["Complete"]) or ("|cffff0000%s|r"):format(L["Incomplete"])
+			self:Print(("%s %s%s"):format(GetAchievementLink(dfks[i].id), completedStr, dfks[i].completed == true and "" or (" (%s %d)"):format(L["Short by"], (dfks[i].req - currentScore))))
 		end
 	end)
 end
@@ -85,8 +80,9 @@ end
 function Module:OnDisable()
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 	self:UnregisterEvent("ACHIEVEMENT_EARNED")
-	self:UnregisterChatCommand("ksm")
-	self:UnregisterChatCommand("ksc")
+	self:UnregisterEvent("MYTHIC_PLUS_CURRENT_AFFIX_UPDATE")
+	self:UnregisterEvent("MYTHIC_PLUS_NEW_WEEKLY_RECORD")
+	self:UnregisterChatCommand("kprog")
 end
 
 function Module:Info()

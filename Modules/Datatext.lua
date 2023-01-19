@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- ElvUI Chat Tweaks By Crackpot (US, Thrall)
+-- ElvUI Chat Tweaks By Crackpot (US, Illidan)
 -- Based on functionality provided by Prat and/or Chatter
 -------------------------------------------------------------------------------
 local Module = ElvUI_ChatTweaks:NewModule("Datatext", "AceConsole-3.0", "AceTimer-3.0")
@@ -139,12 +139,11 @@ local function OnLeave(self)
 	DT.tooltip:Hide()
 end
 
-local function ValueColorUpdate(hex, r, g, b)
+local function ValueColorUpdate(self, hex, r, g, b)
 	displayNoTotal = join("", "|cffffffff%s:|r ", hex, "%d|r")
 	displayTotal = join("", "|cffffffff%s:|r ", hex, "%d|r/", hex, "%d|r")
+	OnEvent(self)
 end
-E["valueColorUpdateFuncs"][ValueColorUpdate] = true
 
 -- register the datatext w/ elvui
-DT:RegisterDatatext(L["Chat Tweaks"], nil, {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave, L["Chat Tweaks"])
---DT:RegisterDatatext(L["Chat Tweaks"], {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave)
+DT:RegisterDatatext(L["Chat Tweaks"], nil, {"PLAYER_ENTERING_WORLD"}, OnEvent, nil, Click, OnEnter, OnLeave, L["Chat Tweaks"], nil, ValueColorUpdate)
