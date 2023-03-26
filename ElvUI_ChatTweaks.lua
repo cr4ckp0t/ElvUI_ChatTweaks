@@ -128,7 +128,7 @@ function ElvUI_ChatTweaks:OnInitialize()
 					name = L["Show ElvUI Chat Tweaks Config Window"],
 					desc = L["Click to open the ElvUI Chat Tweaks config window.  This will also close ElvUI's config window."],
 					width = "double",
-					func = function() ElvUI_ChatTweaks:ToggleConfig(true); E:ToggleOptionsUI(); end,
+					func = function() ElvUI_ChatTweaks:ToggleConfig(true); E:ToggleOptions(); end,
 				},
 			},
 		}
@@ -483,10 +483,10 @@ function ElvUI_ChatTweaks:CHAT_MSG_ADDON(event, prefix, message, channel, sender
 end
 ElvUI_ChatTweaks:RegisterEvent("CHAT_MSG_ADDON")
 
-local function ValueColorUpdate(hex, r, g, b)
+local function ValueColorUpdate(self, hex)
 	ElvUI_ChatTweaks.hexColor = hex
 end
-E["valueColorUpdateFuncs"][ValueColorUpdate] = true
+E.valueColorUpdateFuncs.ChatTweaks = ValueColorUpdate
 
 function ElvUI_ChatTweaks:CreateText(f, layer, fontsize, flag, justifyh)
 	local text = f:CreateFontString(nil, layer)
@@ -566,7 +566,7 @@ ElvUI_ChatTweaks.options.args = {
 		order = 10,
 		name = L["Open ElvUI's Config"],
 		desc = L["Click to toggle ElvUI's config window.  This will also close this window."],
-		func = function() ElvUI_ChatTweaks:ToggleConfig(); E:ToggleOptionsUI(); end,
+		func = function() ElvUI_ChatTweaks:ToggleConfig(); E:ToggleOptions(); end,
 	},
 }
 

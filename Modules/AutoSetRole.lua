@@ -91,7 +91,7 @@ function Module:GetOptions()
 	return options
 end
 
-local function ValueColorUpdate(hex, r, g, b)
+local function ValueColorUpdate(self, hex)
 	Module.hex = hex
 end
-E["valueColorUpdateFuncs"][ValueColorUpdate] = true
+E.valueColorUpdateFuncs.AutoSetRole = ValueColorUpdate
